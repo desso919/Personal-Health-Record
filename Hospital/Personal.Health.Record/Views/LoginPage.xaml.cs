@@ -1,5 +1,4 @@
-﻿using Personal.Health.Record.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,19 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Personal.Health.Record;
 
-namespace Personal.Health.Record
+namespace Personal.Health.Record.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginPage : Page
     {
-        public MainWindow()
+        public LoginPage()
         {
             InitializeComponent();
-            LoginPage login = new LoginPage();
-            LayoutFrame.Navigate(login);
+        }
+
+        private void login(object sender, RoutedEventArgs e)
+        {
+            NavigationPage menu = new NavigationPage();
+            this.NavigationService.Navigate(menu);
+            
         }
     }
 }

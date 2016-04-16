@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HospitalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:3213/HospitalService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:3213/HospitalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:3213/HospitalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Hospital.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IHospitalService_getPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPatient" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getUserByUsernameAndPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByUsernameAndPassword" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getUserByUsernameAndPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByUsernameAndPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getUserByEGNAndPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByEGNAndPassword" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getUserByEGNAndPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserByEGNAndPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospital_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHospital" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospital_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHospitalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getDoctor_InputMessage">
+    <wsdl:part name="parameters" element="tns:getDoctor" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getDoctor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getDoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_logonPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:logonPatient" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_logonPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:logonPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospitalRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHospitalRecord" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospitalRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHospitalRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospitalRecordByPatientID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHospitalRecordByPatientID" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_getHospitalRecordByPatientID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHospitalRecordByPatientIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IHospitalService">
+    <wsdl:operation name="getPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getPatient" message="tns:IHospitalService_getPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getPatientResponse" message="tns:IHospitalService_getPatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByUsernameAndPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getUserByUsernameAndPassword" message="tns:IHospitalService_getUserByUsernameAndPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getUserByUsernameAndPasswordResponse" message="tns:IHospitalService_getUserByUsernameAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserByEGNAndPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getUserByEGNAndPassword" message="tns:IHospitalService_getUserByEGNAndPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getUserByEGNAndPasswordResponse" message="tns:IHospitalService_getUserByEGNAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHospital">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getHospital" message="tns:IHospitalService_getHospital_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getHospitalResponse" message="tns:IHospitalService_getHospital_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getDoctor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getDoctor" message="tns:IHospitalService_getDoctor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getDoctorResponse" message="tns:IHospitalService_getDoctor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="logonPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/logonPatient" message="tns:IHospitalService_logonPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/logonPatientResponse" message="tns:IHospitalService_logonPatient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHospitalRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getHospitalRecord" message="tns:IHospitalService_getHospitalRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getHospitalRecordResponse" message="tns:IHospitalService_getHospitalRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHospitalRecordByPatientID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/getHospitalRecordByPatientID" message="tns:IHospitalService_getHospitalRecordByPatientID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/getHospitalRecordByPatientIDResponse" message="tns:IHospitalService_getHospitalRecordByPatientID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="HospitalService" />
+</wsdl:definitions>

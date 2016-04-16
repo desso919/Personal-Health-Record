@@ -1,0 +1,36 @@
+﻿<Page x:Class="Personal.Health.Record.Views.HospitalsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	 Title="Personal Health Application - Hospitals" Height="600" Width="850">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="start.jpg"/>
+        </Grid.Background>
+
+
+        <!-- Application Name -->
+        <Label Content="Personal Health Application" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
+               Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
+
+        <Label Content="All Hospitals: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
+        <ListBox Name="Hospitals" Grid.Column="0" HorizontalAlignment="Left" Margin="21,106,0,106" Width="354"/>
+
+ <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
+        <ListBox Name="Hospital" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,152,0,27" Width="354"/>
+ -->
+    </Grid>
+</Page>
