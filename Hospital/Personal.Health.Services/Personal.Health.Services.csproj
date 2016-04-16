@@ -46,6 +46,12 @@
     <Compile Include="IVisitationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Personal.Health.Models\Personal.Health.Models.csproj">
+      <Project>{0f3e8b42-b189-41d5-b59e-259fce16746e}</Project>
+      <Name>Personal.Health.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -47,6 +47,10 @@
     <Compile Include="VisitationService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Personal.Health.Models\Personal.Health.Models.csproj">
+      <Project>{0f3e8b42-b189-41d5-b59e-259fce16746e}</Project>
+      <Name>Personal.Health.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Personal.Health.Services\Personal.Health.Services.csproj">
       <Project>{2af5f2d4-1a27-4be9-a724-43073f7750cd}</Project>
       <Name>Personal.Health.Services</Name>

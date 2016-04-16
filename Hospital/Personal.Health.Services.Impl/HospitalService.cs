@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Personal.Health.Services.Impl
 {
-    class HospitalService : IHospitalService
+    public class HospitalService : IHospitalService
     {
     }
 }
