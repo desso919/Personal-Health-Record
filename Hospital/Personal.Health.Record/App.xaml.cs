@@ -19,7 +19,6 @@ namespace Personal.Health.Record
             base.OnStartup(e);
             NinjectConfig.ConfigureContainer();
             NinjectConfig.ComposeObjects(Current);
-
             Current.MainWindow.Show();
         }
     }

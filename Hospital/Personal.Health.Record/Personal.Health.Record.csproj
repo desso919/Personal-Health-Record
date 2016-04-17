@@ -76,12 +76,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\AddHistoryModel.cs" />
+    <Compile Include="Models\PatientDetailsModel.cs" />
     <Compile Include="Ninject\NinjectConfig.cs" />
     <Compile Include="Service References\HospitalReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddHistoryViewModel.cs" />
+    <Compile Include="ViewModels\DoctorsViewModel.cs" />
+    <Compile Include="ViewModels\HospitalsViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\PatientHistoryViewModel.cs" />
+    <Compile Include="ViewModels\PatientViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\ScheduledVisitationsViewModel.cs" />
+    <Compile Include="ViewModels\SchedulingVisitationViewModel.cs" />
     <Compile Include="Views\AddHistoryPaga.xaml.cs">
       <DependentUpon>AddHistoryPaga.xaml</DependentUpon>
     </Compile>
@@ -217,9 +229,7 @@
   <ItemGroup>
     <Resource Include="Views\start.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
@@ -242,6 +252,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Personal.Health.Models\Personal.Health.Models.csproj">
+      <Project>{0f3e8b42-b189-41d5-b59e-259fce16746e}</Project>
+      <Name>Personal.Health.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Personal.Health.Services.Impl\Personal.Health.Services.Impl.csproj">
       <Project>{08caecb4-bc4d-4ec2-8669-d581d82207cd}</Project>
       <Name>Personal.Health.Services.Impl</Name>

@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	  Title="Personal Health Application" Height="600" Width="850">
 
+    <Page.DataContext>
+        <local:PatientViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,13 +31,12 @@
         <!-- Application details -->
         <Label Content="Your personal health record application" FontStyle="Oblique" 
                HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="482"/>
-        <Button Content="View Profile" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,141,0,0" Click="ViewProfile"/>
+        <Button Content="View Profile"  Command="{Binding ShowPatientCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,141,0,0" Click="ViewProfile"/>
         <Button Content="View History" HorizontalAlignment="Left" Margin="50,248,0,0" VerticalAlignment="Top" Width="301" Click="ViewHistory"/>
         <Button Content="Add New History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,322,0,0" Click="AddHistory"/>
         <Button Content="Create New Visitation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,358,0,0" Click="CreateNewVisitation"/>
         <Button Content="View Scheduled Visitations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,287,0,0" Click="ViewScheduledVisitations"/>
         <Button Content="View Hospitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,177,0,0" Click="ViewHospitals"/>
         <Button Content="View Doctors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,212,0,0" Click="ViewDoctors"/>
-
     </Grid>
 </Page>

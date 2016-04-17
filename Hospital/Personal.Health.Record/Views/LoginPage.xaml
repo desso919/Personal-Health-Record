@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Personal Health" Height="600" Width="850">
-
+    <Page.DataContext>
+        <local:LoginViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -32,6 +36,7 @@
         <Label Content="Password" HorizontalAlignment="Left" Margin="21,139,0,0" VerticalAlignment="Top" Width="70"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
         <PasswordBox HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218"/>
-        <Button Content=" Log In " HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
+        <Button Content=" Log In " CommandParameter="1"  HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
+        
     </Grid>
 </Page>

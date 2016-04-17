@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-	Title="Personal Health Application - Add Medical History" Height="600" Width="850">
-
+	  Title="Personal Health Application - Add Medical History" Height="600" Width="850">   
+    
+    <Page.DataContext>
+        <local:AddHistoryViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -30,17 +35,17 @@
         <Label Content="Reason:" HorizontalAlignment="Left" Margin="27,303,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Diagnose: " HorizontalAlignment="Left" Margin="27,345,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Notes / Description: " HorizontalAlignment="Left" Margin="27,424,0,0" VerticalAlignment="Top" Width="117"/>
-
-
-        <TextBox HorizontalAlignment="Left" Height="55" Margin="164,348,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="164,306,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
-        <TextBox HorizontalAlignment="Left" Height="91" Margin="164,427,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="647"/>
-        <ComboBox HorizontalAlignment="Left" Margin="164,104,0,0" VerticalAlignment="Top" Width="295"/>        
-        <ComboBox HorizontalAlignment="Left" Margin="164,152,0,0" VerticalAlignment="Top" Width="295"/>
         <Label Content="Hospital:" HorizontalAlignment="Left" Margin="27,100,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Doctor:" HorizontalAlignment="Left" Margin="27,152,0,0" VerticalAlignment="Top" Width="117"/>
-        <DataGrid HorizontalAlignment="Left" Margin="633,144,0,0" VerticalAlignment="Top"/>
-        <DatePicker HorizontalAlignment="Left" Margin="164,218,0,0" VerticalAlignment="Top" Width="295"/>
         <Label Content="Date:" HorizontalAlignment="Left" Margin="27,216,0,0" VerticalAlignment="Top" Width="117"/>
+
+        <ComboBox Name="HispitalId" Text="{Binding HospitalId}" HorizontalAlignment="Left" Margin="164,104,0,0" VerticalAlignment="Top" Width="295"/>
+        <ComboBox Name="DoctorId" Text="{Binding HospitalId}" HorizontalAlignment="Left" Margin="164,152,0,0" VerticalAlignment="Top" Width="295"/>
+        <TextBox Name="Diagnose" Text="{Binding Diagnose}" HorizontalAlignment="Left" Height="55" Margin="164,348,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
+        <TextBox Name="Reason" Text="{Binding Reason}" HorizontalAlignment="Left" Height="23" Margin="164,306,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
+        <TextBox Name="Description" Text="{Binding Description}" HorizontalAlignment="Left" Height="91" Margin="164,427,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="647"/>
+        <DatePicker Name="Data" Text="{Binding Date}" HorizontalAlignment="Left" Margin="164,218,0,0" VerticalAlignment="Top" Width="295"/>
+       
+        <Button Content="Add New History" CommandParameter="1" HorizontalAlignment="Left" Margin="556,267,0,0" VerticalAlignment="Top" Width="173" Command="{Binding AddHistoryCommand}" Height="75"/>
     </Grid>
 </Page>

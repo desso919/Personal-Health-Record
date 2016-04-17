@@ -22,6 +22,6 @@ namespace Hospital.Models
 
         public string Description { get; set; }
 
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

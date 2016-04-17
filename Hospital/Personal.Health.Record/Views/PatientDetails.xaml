@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	  Title="Personal Health Application - Patient Details" Height="600" Width="850">
 
+    <Page.DataContext >
+        <local:PatientViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -37,14 +42,13 @@
         <Label Content="Birth Date: " HorizontalAlignment="Left" Margin="26,394,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Content="Allergies: " HorizontalAlignment="Left" Margin="505,104,0,0" VerticalAlignment="Top" Width="70"/>
 
-
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,177,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,269,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,223,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,312,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,355,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,397,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,177,0,0" Text="{Binding SecondName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>        
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,223,0,0" Text="{Binding LastName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,269,0,0" Text="{Binding EGN}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,312,0,0" Text="{Binding Age}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,355,0,0" Text="{Binding Gender}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,397,0,0" Text="{Binding BirthDate}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
         
         <ListView Name="Allergies" HorizontalAlignment="Left" Height="285" Margin="505,135,0,0" VerticalAlignment="Top" Width="285">
             <ListView.View>
@@ -53,6 +57,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
+        <Button Content="Show Patient" Command="{Binding ShowPatientCommand}" HorizontalAlignment="Left" Margin="163,450,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Page>
