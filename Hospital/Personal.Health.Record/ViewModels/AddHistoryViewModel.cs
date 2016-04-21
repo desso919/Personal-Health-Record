@@ -4,6 +4,7 @@ using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using System.Windows.Input;
 
 namespace Personal.Health.Record.ViewModels
 {
-    class AddHistoryViewModel
+    class AddHistoryViewModel : INotifyPropertyChanged
     {
         private AddHistoryModel historyModel;
 
@@ -23,13 +24,6 @@ namespace Personal.Health.Record.ViewModels
         private string diagnose;
         private string description;
 
-        public long HospitalId { get { return hospitalId; } set { hospitalId = value; } }
-        public long DoctorId { get { return doctorId; } set { doctorId = value; } }
-        public DateTime Date { get { return date; } set { date = value; } }
-        public string Reason { get { return reason; } set { reason = value; } }
-        public string Diagnose { get { return diagnose; } set { diagnose = value; } }
-        public string Description { get { return description; } set { description = value; } }
-
         public AddHistoryViewModel()
         {
             addHistoryCommand = new RelayCommand(AddHistoryRecord, param => this.canExecute);
@@ -37,6 +31,14 @@ namespace Personal.Health.Record.ViewModels
             historyModel = new AddHistoryModel();
         }
 
+        #region Properties 
+        public long HospitalId { get { return hospitalId; } set { hospitalId = value; } }
+        public long DoctorId { get { return doctorId; } set { doctorId = value; } }
+        public DateTime Date { get { return date; } set { date = value; } }
+        public string Reason { get { return reason; } set { reason = value; } }
+        public string Diagnose { get { return diagnose; } set { diagnose = value; } }
+        public string Description { get { return description; } set { description = value; } }
+        #endregion
         #region ICommand
         private ICommand addHistoryCommand;
         private ICommand toggleExecuteCommand { get; set; }
@@ -105,5 +107,7 @@ namespace Personal.Health.Record.ViewModels
             }
         }
         #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

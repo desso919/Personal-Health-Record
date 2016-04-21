@@ -3,15 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	 Title="Personal Health Application - Hospitals" Height="600" Width="850">
+    
+    <Page.DataContext>
+        <local:HospitalsViewModel/>
+    </Page.DataContext>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -27,9 +28,27 @@
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
 
         <Label Content="All Hospitals: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
-        <ListBox Name="Hospitals" Grid.Column="0" HorizontalAlignment="Left" Margin="21,106,0,106" Width="354"/>
+        <ListBox  HorizontalContentAlignment="Stretch" Margin="0,106,0,115" Name="listBox1" ItemsSource="{Binding Hospitals}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="firstName" Text="{Binding Path=Name}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox Name="secondName" Text="{Binding Path=Address}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
- <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
+
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="186,210,0,0" Command="{Binding ShowHospitalsCommand}" VerticalAlignment="Top" Width="75"/>
+
+
+        <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
         <ListBox Name="Hospital" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,152,0,27" Width="354"/>
  -->
     </Grid>

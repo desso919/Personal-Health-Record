@@ -64,7 +64,9 @@ namespace Personal.Health.Record.ViewModels
             FirstName = patient.FirstName;
             SecondName = patient.SecondName;
             LastName = patient.LastName;
-            Age = patient.Age;
+            EGN = patient.EGN;
+            Age = patient.Age;           
+            Gender = patient.Gender;
             BirthDate = Convert.ToDateTime(patient.BirhtDate);
         }
         #endregion

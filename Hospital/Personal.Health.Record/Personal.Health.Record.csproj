@@ -77,7 +77,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\AddHistoryModel.cs" />
+    <Compile Include="Models\DoctorsModel.cs" />
+    <Compile Include="Models\HospitalsModel.cs" />
     <Compile Include="Models\PatientDetailsModel.cs" />
+    <Compile Include="Models\SchedulingVisitationModul.cs" />
     <Compile Include="Ninject\NinjectConfig.cs" />
     <Compile Include="Service References\HospitalReference\Reference.cs">
       <AutoGen>True</AutoGen>

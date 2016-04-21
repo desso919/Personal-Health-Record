@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Personal.Health.Services
 {
     public interface IDoctorService
     {
+        List<Doctor> getAllDoctors();
     }
 }

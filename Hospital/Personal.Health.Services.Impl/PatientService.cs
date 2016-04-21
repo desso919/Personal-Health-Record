@@ -13,9 +13,12 @@ namespace Personal.Health.Services.Impl
         {
             Patient pat = new Patient();
             pat.Id = 1;
+            pat.Username = "desko";
             pat.FirstName = "Desislav";
             pat.SecondName = "Andreev";
             pat.LastName = "Hristov";
+            pat.EGN = "9403082343";
+            pat.Gender = "Male";
             pat.Age = 22;
             pat.BirhtDate = new DateTime().ToShortDateString();
             return pat;

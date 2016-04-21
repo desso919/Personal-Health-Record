@@ -3,10 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Personal Health Application - Doctors" Height="600" Width="850">
 
+    <Page.DataContext>
+        <local:DoctorsViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,8 +30,47 @@
         <Label Content="Personal Health Application" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
 
-        <Label Content="All Hospitals: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
-        <ListBox Name="Hospitals" Grid.Column="0" HorizontalAlignment="Left" Margin="21,106,0,112" Width="354"/>
+        <Label Content="All Doctors: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>       
+
+       <!-- <ListBox Name="lbTodoList" ItemsSource="{Binding Doctors}" HorizontalContentAlignment="Stretch" Margin="0,106,0,115">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Path=FirstName }" />
+                        <TextBlock Text="{Binding Path=SecondName }" />       
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+           </ListBox>
+            -->
+
+
+        <ListBox  HorizontalContentAlignment="Stretch" Margin="0,106,0,115" Name="listBox1" ItemsSource="{Binding Doctors}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>                    
+                        <TextBox Name="firstName" Text="{Binding Path=FirstName, Mode=TwoWay}" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox Name="secondName" Text="{Binding Path=SecondName, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBox Name="lastName" Text="{Binding Path=LastName, Mode=TwoWay}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBox Name="specialization" Text="{Binding Path=Specialization, Mode=TwoWay}" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="186,210,0,0" Command="{Binding ShowDoctorsCommand}" VerticalAlignment="Top" Width="75"/>
 
         <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
         <ListBox Name="Hospital" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,152,0,27" Width="354"/>

@@ -20,6 +20,10 @@ namespace Hospital.Models
 
         public string LastName { get; set; }
 
+        public string EGN { get; set; }
+
+        public string Gender { get; set; }
+
         public int Age { get; set; }
 
         public string BirhtDate { get; set; }

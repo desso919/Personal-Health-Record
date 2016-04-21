@@ -10,6 +10,9 @@ namespace Personal.Health.Services
     public interface IHistoryService
     {
          History getHistory(long id);
+
+         List<History> getAllHistory();
+
          Boolean addHistory(History history);
     }
 }

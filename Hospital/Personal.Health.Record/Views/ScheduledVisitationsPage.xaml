@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="Personal Health Application - Scheduled Visitations" Height="600" Width="850">
 
+    <Page.DataContext>
+        <local:ScheduledVisitationsViewModel/>
+    </Page.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -26,6 +31,28 @@
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
 
         <Label Content="Scheduled Visitations: " HorizontalAlignment="Left" Margin="51,157,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
-        <ListBox Name="ScheduledVisitations" HorizontalAlignment="Left" Margin="51,188,0,103" Width="750"/>
+        <ListBox  HorizontalContentAlignment="Stretch" Margin="51,106,70,158" Name="listBox1" ItemsSource="{Binding Visitations}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Name="doctor" Grid.Column="0" Text="{Binding Path=DoctorId}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                        <TextBox Name="hospital" Grid.Column="1" Text="{Binding Path=HospitalId}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBox Name="data" Grid.Column="2" Text="{Binding Path=Data}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBox Name="reason" Grid.Column="3" Text="{Binding Path=Reason}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                        <TextBox Name="desciption" Grid.Column="4" Text="{Binding Path=Description}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <Button Content="Show History" HorizontalAlignment="Left" Margin="51,471,0,0" Command="{Binding ShowVisitationsCommand}" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Page>
