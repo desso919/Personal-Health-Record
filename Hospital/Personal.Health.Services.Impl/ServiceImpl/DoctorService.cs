@@ -5,14 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Personal.Health.Services.Impl
 {
     public class DoctorService : IDoctorService 
     {
         public List<Hospital.Models.Doctor> getAllDoctors()
         {
+
            Doctor doctor = new Doctor();
-           doctor.FirstName = "Ros";
+           doctor.FirstName = "dcfvgh";
            doctor.SecondName = "Muci";
            doctor.LastName = "Geler";
             doctor.Specialization = "Brain Surgery";

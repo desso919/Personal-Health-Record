@@ -29,8 +29,7 @@ namespace Personal.Health.Record.Views
         private void login(object sender, RoutedEventArgs e)
         {
             NavigationPage menu = new NavigationPage();
-            this.NavigationService.Navigate(menu);
-            
+            this.NavigationService.Navigate(menu);          
         }
     }
 }

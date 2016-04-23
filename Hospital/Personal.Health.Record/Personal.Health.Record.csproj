@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -82,11 +86,6 @@
     <Compile Include="Models\PatientDetailsModel.cs" />
     <Compile Include="Models\SchedulingVisitationModul.cs" />
     <Compile Include="Ninject\NinjectConfig.cs" />
-    <Compile Include="Service References\HospitalReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AddHistoryViewModel.cs" />
     <Compile Include="ViewModels\DoctorsViewModel.cs" />
     <Compile Include="ViewModels\HospitalsViewModel.cs" />
@@ -197,34 +196,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\HospitalReference\HospitalService.wsdl" />
-    <None Include="Service References\HospitalReference\HospitalService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HospitalReference\HospitalService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HospitalReference\HospitalService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.Allergy.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.Doctor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.History.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.HospitalModel.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.Patient.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HospitalReference\Personal.Health.Record.HospitalReference.ScheduledVisitation.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -235,24 +206,6 @@
   <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\HospitalReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\HospitalReference\HospitalService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\HospitalReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\HospitalReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\HospitalReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Personal.Health.Models\Personal.Health.Models.csproj">
