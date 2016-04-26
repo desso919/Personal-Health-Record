@@ -9,10 +9,14 @@ namespace Personal.Health.Services
 {
     public interface IHistoryService
     {
-         History getHistory(long id);
+        History GetHistory(long id);
 
-         List<History> getAllHistory();
+        List<History> GetAllHistoryForThisPatient(long patientId);
 
-         Boolean addHistory(History history);
+        List<History> GetAllHistoryFromHospital(long hospitalId);
+
+        List<History> GetAllHistoryByDoctor(long doctorId);
+
+        Boolean addHistory(History history);
     }
 }

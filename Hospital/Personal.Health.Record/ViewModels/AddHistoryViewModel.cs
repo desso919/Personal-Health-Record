@@ -93,7 +93,7 @@ namespace Personal.Health.Record.ViewModels
             history.DoctorId = DoctorId;
             history.Reason = Reason;
             history.Diagnose = Diagnose;
-            history.Date = Date;
+           // history.Date = Date.ToShortDateString;
             history.Description = Description;
             Boolean isAdded =  historyModel.addHistory(history);
 

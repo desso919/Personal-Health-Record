@@ -56,6 +56,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock">
       <HintPath>..\packages\Extended.Wpf.Toolkit.2.7\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -89,6 +92,7 @@
     <Compile Include="ViewModels\AddHistoryViewModel.cs" />
     <Compile Include="ViewModels\DoctorsViewModel.cs" />
     <Compile Include="ViewModels\HospitalsViewModel.cs" />
+    <Compile Include="ViewModels\LoggedInPatient.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\PatientHistoryViewModel.cs" />
@@ -203,7 +207,6 @@
   <ItemGroup>
     <Resource Include="Views\start.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
@@ -220,6 +223,27 @@
       <Project>{2af5f2d4-1a27-4be9-a724-43073f7750cd}</Project>
       <Name>Personal.Health.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\history.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\scheduled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\hospital.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Animated\beat-heart.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Animated\hospitalGif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Animated\hospital_loop.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

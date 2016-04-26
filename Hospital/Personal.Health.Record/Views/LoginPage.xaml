@@ -34,9 +34,10 @@
         <!-- Log on form -->
         <Label Content="Username" HorizontalAlignment="Left" Margin="21,78,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="21,139,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <PasswordBox HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218"/>
-        <Button Content=" Log In " CommandParameter="1"  HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=Username}" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <PasswordBox Name="password" HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218"/>
+        <Button Content=" Log In " CommandParameter="{Binding ElementName=password}"  HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
+        <Button Content=" Register " CommandParameter="1"  HorizontalAlignment="Left" Margin="131,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
         
     </Grid>
 </Page>

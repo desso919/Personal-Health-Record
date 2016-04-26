@@ -9,6 +9,10 @@ namespace Personal.Health.Services
 {
     public interface IPatientService
     {
-        Patient getPatient(long id);
+        Patient GetPatient(long id);
+
+        Patient Login(string username, string password);
+
+        Boolean RegisterUser(Patient patientToBeAdded);
     }
 }

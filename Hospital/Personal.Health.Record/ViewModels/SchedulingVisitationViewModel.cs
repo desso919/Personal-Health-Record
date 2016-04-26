@@ -88,7 +88,7 @@ namespace Personal.Health.Record.ViewModels
             visitation.HospitalId = HospitalId;
             visitation.DoctorId = DoctorId;
             visitation.Reason = Reason;
-            visitation.Date = Date;
+            visitation.Date = Date.ToShortDateString();
             visitation.Description = Description;
             Boolean isAdded = schedulingVisitationModul.AddNewScheduleVisitation(visitation);
 

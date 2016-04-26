@@ -75,7 +75,7 @@ namespace Personal.Health.Record.ViewModels
         public void ShowHospitals(object obj)
         {
             IHospitalService hospitalService = new HospitalService();
-            Hospitals = hospitalService.getAllHispitals();
+            Hospitals = hospitalService.GetAllHispitals();
         } 
         #endregion
 

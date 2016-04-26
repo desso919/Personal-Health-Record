@@ -9,7 +9,13 @@ namespace Personal.Health.Services
 {
     public interface IVisitationService
     {
-        List<ScheduledVisitation> getAllScheduledVisitation();
+        ScheduledVisitation GetVisitation(long id);
+
+        List<ScheduledVisitation> GetAllScheduledVisitationsForThisPatient(long patientId);
+
+        List<ScheduledVisitation> GetAllScheduledVisitationsByHospital(long hospitalId);
+
+        List<ScheduledVisitation> GetAllScheduledVisitationsByDoctor(long doctorId);
 
         Boolean AddNewScheduleVisitation(ScheduledVisitation visitatin);
     }

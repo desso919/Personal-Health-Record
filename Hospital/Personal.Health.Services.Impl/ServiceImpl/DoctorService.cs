@@ -1,26 +1,27 @@
 ﻿using Hospital.Models;
-using System;
+using Personal.Health.Services.Impl.HospitalServiceReference;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Personal.Health.Services.Impl.ServiceImpl;
 
 
 namespace Personal.Health.Services.Impl
 {
     public class DoctorService : IDoctorService 
     {
-        public List<Hospital.Models.Doctor> getAllDoctors()
+        public List<Doctor> GetAllDoctors()
         {
+           return JsonConvert.DeserializeObject<List<Doctor>>(WebService.getInstance().GetAllDoctors());
+        }
 
-           Doctor doctor = new Doctor();
-           doctor.FirstName = "dcfvgh";
-           doctor.SecondName = "Muci";
-           doctor.LastName = "Geler";
-            doctor.Specialization = "Brain Surgery";
-           List<Doctor> doctors = new List<Doctor>();
-           doctors.Add(doctor);
-           return doctors;
+        public Doctor getDoctor(long id)
+        {
+            return JsonConvert.DeserializeObject<Doctor>(WebService.getInstance().GetDoctor(id));
+        }
+
+        public List<Doctor> GetAllDoctorsFromHospital(long hospital_id)
+        {
+            return JsonConvert.DeserializeObject<List<Doctor>>(WebService.getInstance().GetDoctorsByHospitalId(hospital_id));
         }
     }
 }

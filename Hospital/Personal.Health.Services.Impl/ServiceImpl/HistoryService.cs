@@ -1,4 +1,8 @@
 ﻿using Hospital.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Personal.Health.Services.Impl.HospitalServiceReference;
+using Personal.Health.Services.Impl.ServiceImpl;
 using System;
 using System.Collections.Generic;
 
@@ -6,31 +10,24 @@ namespace Personal.Health.Services.Impl
 {
     public class HistoryService : IHistoryService
     {
-        public History getHistory(long id)
+        public History GetHistory(long id)
         {
-            History history = new History();
-            history.DoctorId = 1;
-            history.HospitalId = 2;
-            history.Date = new DateTime();
-            history.Description = "Pregled";
-            history.Reason = "Sifilis";
-            history.Diagnose = "You will die soon!";
-            return history;
+            return JsonConvert.DeserializeObject<History>(WebService.getInstance().GetHospitalRecord(id));
         }
 
-        public List<History> getAllHistory()
+        public List<History> GetAllHistoryForThisPatient(long patientId)
         {
-            List<History> histories = new List<History>();
-            History history = new History();
+            return JsonConvert.DeserializeObject<List<History>>(WebService.getInstance().GetHospitalRecordByPatientID(patientId));
+        }
 
-            history.DoctorId = 1;
-            history.HospitalId = 2;
-            history.Date = new DateTime();
-            history.Description = "Pregled";
-            history.Reason = "Sifilis";
-            history.Diagnose = "You will die soon!";
-            histories.Add(history);
-            return histories;
+        public List<History> GetAllHistoryFromHospital(long hospitalId)
+        {
+            return JsonConvert.DeserializeObject<List<History>>(WebService.getInstance().GetHospitalRecordByHospitalID(hospitalId));
+        }
+
+        public List<History> GetAllHistoryByDoctor(long doctorId)
+        {
+            return JsonConvert.DeserializeObject<List<History>>(WebService.getInstance().GetHospitalRecordByDoctorID(doctorId));
         }
 
         public bool addHistory(History history)

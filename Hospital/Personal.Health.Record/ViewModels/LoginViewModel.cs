@@ -1,4 +1,5 @@
 ﻿using Hospital.Models;
+using Personal.Health.Record.Views;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
@@ -13,6 +14,11 @@ namespace Personal.Health.Record.ViewModels
 {
     class LoginViewModel
     {
+        private string username;
+        private string password;
+
+        public string Username { get { return username; } set { username = value; } }
+        public string Password { get { return password; } set { password = value; } }
 
         private ICommand loginCommand;
         private ICommand toggleExecuteCommand { get; set; }
@@ -41,19 +47,26 @@ namespace Personal.Health.Record.ViewModels
             get { return toggleExecuteCommand; }
             set { toggleExecuteCommand = value; }
         }
-
-      
+  
 
         public void ChangeCanExecute(object obj)
         {
             canExecute = !canExecute;
         }
 
-        public void LoginPatient(object id)
+        public void LoginPatient(object obj)
         {
-            IPatientService historyService = new PatientService();
-            Patient patient = historyService.getPatient(Convert.ToInt64(id));
-            MessageBox.Show("Patietn : " + patient.FullName);
+            IPatientService patientService = new PatientService();
+            Patient patient = patientService.Login(Username, Password);
+            if (patient != null)
+            {
+                LoggedInPatient.Init(patient);
+                MessageBox.Show(" Welcome : " + patient.FullName);
+            }
+            else
+            {
+                MessageBox.Show(" Wrong Username or password : ");
+            }
         }
     }
 }

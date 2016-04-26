@@ -13,7 +13,7 @@ namespace Personal.Health.Record.ViewModels
 {
     class PatientHistoryViewModel : INotifyPropertyChanged
     {
-         private List<History> histories;
+        private List<History> histories;
 
          public PatientHistoryViewModel()
         {
@@ -75,7 +75,18 @@ namespace Personal.Health.Record.ViewModels
         public void ShowHistories(object obj)
         {
             IHistoryService historyService = new HistoryService();
-            Histories = historyService.getAllHistory();
+            IDoctorService doctorService = new DoctorService();
+            IHospitalService hospitalService = new HospitalService();
+            List<History> histories = historyService.GetAllHistoryForThisPatient(1);
+
+            foreach(History history in histories) 
+            {
+                HospitalModel hospital = hospitalService.GetHispital(history.HistoryId);
+                Doctor doctor = doctorService.getDoctor(history.DoctorId);
+                history.Doctor = doctor.FirstName + " " + doctor.SecondName + " " + doctor.LastName;
+                history.Hospital = hospital.Name;
+            }
+            Histories = histories;
         } 
         #endregion
 

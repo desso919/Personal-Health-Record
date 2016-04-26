@@ -14,7 +14,7 @@ namespace Personal.Health.Record.Models
        public List<Doctor> getDoctors()
         {
             IDoctorService doctorService = new DoctorService();
-            List<Doctor> doctors = doctorService.getAllDoctors();
+            List<Doctor> doctors = doctorService.GetAllDoctors();
             return doctors;
         }
       

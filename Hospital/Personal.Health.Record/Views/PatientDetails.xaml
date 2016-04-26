@@ -42,13 +42,13 @@
         <Label Content="Birth Date: " HorizontalAlignment="Left" Margin="26,394,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Content="Allergies: " HorizontalAlignment="Left" Margin="505,104,0,0" VerticalAlignment="Top" Width="70"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,177,0,0" Text="{Binding SecondName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>        
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,223,0,0" Text="{Binding LastName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,269,0,0" Text="{Binding EGN}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,312,0,0" Text="{Binding Age}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,355,0,0" Text="{Binding Gender}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,397,0,0" Text="{Binding BirthDate}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,135,0,0" Text="{Binding Path=LogedInPatient.FirstName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,177,0,0" Text="{Binding Path=LogedInPatient.SecondName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,223,0,0" Text="{Binding Path=LogedInPatient.LastName}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,269,0,0" Text="{Binding Path=LogedInPatient.EGN}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,312,0,0" Text="{Binding Path=LogedInPatient.Age}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,355,0,0" Text="{Binding Path=LogedInPatient.Gender}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="163,397,0,0" Text="{Binding Path=LogedInPatient.BirthDate}" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
         
         <ListView Name="Allergies" HorizontalAlignment="Left" Height="285" Margin="505,135,0,0" VerticalAlignment="Top" Width="285">
             <ListView.View>

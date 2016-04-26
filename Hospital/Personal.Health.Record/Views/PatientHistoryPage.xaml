@@ -31,28 +31,48 @@
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
 
         <Label Content="Patient History: " HorizontalAlignment="Left" Margin="51,157,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
-        <ListBox  HorizontalContentAlignment="Stretch" Margin="51,106,70,158" Name="listBox1" ItemsSource="{Binding Histories}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
+
+        <ListView Grid.Column="0" ItemsSource="{Binding Histories}" >
+            <ListView.ItemTemplate>
+                <DataTemplate >
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Name="doctor" Grid.Column="0" Text="{Binding Path=DoctorId}" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-                        <TextBox Name="hospital" Grid.Column="1" Text="{Binding Path=HospitalId}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                        <TextBox Name="data" Grid.Column="2" Text="{Binding Path=Data}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                        <TextBox Name="reason" Grid.Column="3" Text="{Binding Path=Reason}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                        <TextBox Name="diagnose" Grid.Column="4" Text="{Binding Path=Diagnose}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                        <TextBox Name="desciption" Grid.Column="5" Text="{Binding Path=Description}" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+                        <Image Source="../Images/Icons/history.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="32"/>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text=" Hospital: " />
+                            <TextBlock Text="{Binding Hospital}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text=" Doctor: " />
+                            <TextBlock Text="{Binding Doctor}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text=" Reason: " />
+                            <TextBlock Text="{Binding Reason}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text=" Diagnose: " />
+                            <TextBlock Text="{Binding Diagnose}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text=" Description: " />
+                            <TextBlock Text="{Binding Description}" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text=" Date: " />
+                            <TextBlock Text="{Binding Date}"/>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
 
 
         <Button Content="Show History" HorizontalAlignment="Left" Margin="51,471,0,0" Command="{Binding ShowHistoriesCommand}" VerticalAlignment="Top" Width="75"/>

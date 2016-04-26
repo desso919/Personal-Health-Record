@@ -1,22 +1,22 @@
 ﻿using Hospital.Models;
-using System;
+using Newtonsoft.Json;
+using Personal.Health.Services.Impl.HospitalServiceReference;
+using Personal.Health.Services.Impl.ServiceImpl;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Personal.Health.Services.Impl
 {
     public class HospitalService : IHospitalService
     {
-        public List<HospitalModel> getAllHispitals()
+        public List<HospitalModel> GetAllHispitals()
         {
-            HospitalModel hospital = new HospitalModel();
-            hospital.Name = " Tokuda Hospital";
-            hospital.Address = "Na mainata si";
-            List<HospitalModel> hospitals = new List<HospitalModel>();
-            hospitals.Add(hospital);
-            return hospitals;
+            return JsonConvert.DeserializeObject<List<HospitalModel>>(WebService.getInstance().GetAllHospitals());
+        }
+
+        public HospitalModel GetHispital(long id)
+        {
+            return JsonConvert.DeserializeObject<HospitalModel>(WebService.getInstance().GetHospital(id));
         }
     }
 }

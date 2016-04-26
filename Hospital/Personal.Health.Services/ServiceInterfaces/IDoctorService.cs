@@ -9,6 +9,10 @@ namespace Personal.Health.Services
 {
     public interface IDoctorService
     {
-        List<Doctor> getAllDoctors();
+        List<Doctor> GetAllDoctors();
+
+        Doctor getDoctor(long id);
+
+        List<Doctor> GetAllDoctorsFromHospital(long hospital_id);
     }
 }

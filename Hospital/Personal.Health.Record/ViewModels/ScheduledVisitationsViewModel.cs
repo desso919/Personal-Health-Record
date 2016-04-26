@@ -26,7 +26,7 @@ namespace Personal.Health.Record.ViewModels
         #endregion
 
         #region ICommand
-         private ICommand showVisitationsCommand;
+        private ICommand showVisitationsCommand;
         private ICommand toggleExecuteCommand { get; set; }
         private bool canExecute = true;
 
@@ -75,7 +75,11 @@ namespace Personal.Health.Record.ViewModels
         public void ShowVisitations(object obj)
         {
             IVisitationService visitationService = new VisitationService();
-            Visitations = visitationService.getAllScheduledVisitation();
+            Visitations = visitationService.GetAllScheduledVisitationsForThisPatient(3);
+            if (Visitations.Count == 0)
+            {
+              //To-do show message
+            }
         } 
         #endregion
 

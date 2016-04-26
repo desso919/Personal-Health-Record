@@ -14,30 +14,16 @@ namespace Personal.Health.Record.ViewModels
 {
     public class PatientViewModel : INotifyPropertyChanged
     {
-        private PatientDetailsModel patientModel;
-
-        private string firstName;
-        private string secondName;
-        private string lastName;
-        private string gender;
-        private string egn;
-        private int age;
-        private DateTime birthDate;
+        private Patient logedInPatient;
 
         public PatientViewModel()
         {
             showPatientCommand = new RelayCommand(showPatient);
-            patientModel = new PatientDetailsModel();
         }
 
         #region View Properties
-        public string FirstName { get { return firstName; } set { firstName = value; OnPropertyChanged("FirstName"); } }
-        public string SecondName { get { return secondName; } set { secondName = value; OnPropertyChanged("SecondName"); } }
-        public string LastName { get { return lastName; } set { lastName = value; OnPropertyChanged("LastName"); } }
-        public string Gender { get { return gender; } set { gender = value; OnPropertyChanged("Gender"); } }
-        public string EGN { get { return egn; } set { egn = value; OnPropertyChanged("EGN"); } }
-        public long Age { get { return age; } set { age = (int)value; OnPropertyChanged("Age"); } }
-        public DateTime BirthDate { get { return birthDate; } set { birthDate = value; OnPropertyChanged("BirthDate"); } }
+        public Patient LogedInPatient { get { return logedInPatient; } set { logedInPatient = value; OnPropertyChanged("LogedInPatient"); } }
+
         #endregion
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
@@ -60,14 +46,8 @@ namespace Personal.Health.Record.ViewModels
 
         private void showPatient(object id)
         {
-            Patient patient = patientModel.getPatient(id);
-            FirstName = patient.FirstName;
-            SecondName = patient.SecondName;
-            LastName = patient.LastName;
-            EGN = patient.EGN;
-            Age = patient.Age;           
-            Gender = patient.Gender;
-            BirthDate = Convert.ToDateTime(patient.BirhtDate);
+            IPatientService patientService = new PatientService();
+            LogedInPatient =  patientService.GetPatient(1);
         }
         #endregion
     }

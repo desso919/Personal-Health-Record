@@ -7,11 +7,6 @@ namespace Personal.Health.Record.Models
 {
     public class PatientDetailsModel
     {
-        public Patient getPatient(object id)
-        {
-            IPatientService patientService = new PatientService();
-            Patient patient = patientService.getPatient(Convert.ToInt64(id));
-            return patient;
-        }
+
     }
 }
