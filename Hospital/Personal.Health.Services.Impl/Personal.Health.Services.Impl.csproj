@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\HospitalServiceReference\Reference.cs">
+    <Compile Include="Service References\HospitalWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -74,11 +74,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Service References\HospitalServiceReference\HospitalWebServiceImpl.wsdl" />
-    <None Include="Service References\HospitalServiceReference\HospitalWebServiceImpl.xsd">
+    <None Include="Service References\HospitalWebService\HospitalService.wsdl" />
+    <None Include="Service References\HospitalWebService\HospitalService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\HospitalServiceReference\HospitalWebServiceImpl3.xsd">
+    <None Include="Service References\HospitalWebService\HospitalService1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -86,19 +86,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\HospitalServiceReference\" />
+    <WCFMetadataStorage Include="Service References\HospitalWebService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\HospitalServiceReference\HospitalWebServiceImpl.disco" />
+    <None Include="Service References\HospitalWebService\HospitalService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\HospitalServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\HospitalWebService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\HospitalServiceReference\configuration.svcinfo" />
+    <None Include="Service References\HospitalWebService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\HospitalServiceReference\Reference.svcmap">
+    <None Include="Service References\HospitalWebService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -13,10 +13,6 @@ namespace Personal.Health.Services
 
         List<ScheduledVisitation> GetAllScheduledVisitationsForThisPatient(long patientId);
 
-        List<ScheduledVisitation> GetAllScheduledVisitationsByHospital(long hospitalId);
-
-        List<ScheduledVisitation> GetAllScheduledVisitationsByDoctor(long doctorId);
-
         Boolean AddNewScheduleVisitation(ScheduledVisitation visitatin);
     }
 }

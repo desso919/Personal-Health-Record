@@ -29,7 +29,7 @@
 
         <Label Content="All Hospitals: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
 
-        <ListView Grid.Column="0" ItemsSource="{Binding Hospitals}" >
+        <ListView Grid.Column="0" ItemsSource="{Binding Hospitals}" Margin="21,101,0,87" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -62,7 +62,7 @@
         </ListView>
 
 
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="186,210,0,0" Command="{Binding ShowHospitalsCommand}" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="10,493,0,0" Command="{Binding ShowHospitalsCommand}" VerticalAlignment="Top" Width="75"/>
 
 
         <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>

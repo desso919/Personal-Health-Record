@@ -1,5 +1,6 @@
 ﻿using Hospital.Models;
 using Personal.Health.Record.Models;
+using Personal.Health.Record.Ninject;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
@@ -10,12 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Ninject;
 
 namespace Personal.Health.Record.ViewModels
 {
     class AddHistoryViewModel : INotifyPropertyChanged
     {
-        private AddHistoryModel historyModel;
+        private IHistoryService service;
 
         private long hospitalId;
         private long doctorId;
@@ -28,7 +30,7 @@ namespace Personal.Health.Record.ViewModels
         {
             addHistoryCommand = new RelayCommand(AddHistoryRecord, param => this.canExecute);
             toggleExecuteCommand = new RelayCommand(ChangeCanExecute);
-            historyModel = new AddHistoryModel();
+            service = NinjectConfig.Container.Get<IHistoryService>();
         }
 
         #region Properties 
@@ -95,7 +97,7 @@ namespace Personal.Health.Record.ViewModels
             history.Diagnose = Diagnose;
            // history.Date = Date.ToShortDateString;
             history.Description = Description;
-            Boolean isAdded =  historyModel.addHistory(history);
+            Boolean isAdded =  service.addHistory(history);
 
             if (isAdded)
             {

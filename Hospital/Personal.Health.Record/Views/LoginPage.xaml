@@ -2,8 +2,10 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
+      xmlns:utilities="clr-namespace:Personal.Health.Record.Utilities"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Personal Health" Height="600" Width="850">
@@ -20,10 +22,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid.Background>
+      <!--<Grid.Background>
             <ImageBrush ImageSource="start.jpg"/>
         </Grid.Background>
-
+-->
         <!-- Application Name -->
         <Label Content="Personal Health Application" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
@@ -34,10 +36,14 @@
         <!-- Log on form -->
         <Label Content="Username" HorizontalAlignment="Left" Margin="21,78,0,0" VerticalAlignment="Top" Width="70"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="21,139,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Path=Username}" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <PasswordBox Name="password" HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218"/>
-        <Button Content=" Log In " CommandParameter="{Binding ElementName=password}"  HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
-        <Button Content=" Register " CommandParameter="1"  HorizontalAlignment="Left" Margin="131,215,0,0" VerticalAlignment="Top" Width="75" Click="login"/>
-        
+        <TextBox HorizontalAlignment="Left" Text="{Binding Path=LoginCredential}" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
+        <PasswordBox Name="password" HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218">
+            <i:Interaction.Behaviors>
+                <utilities:PasswordBoxBindingBehavior Password="{Binding Password}" />
+            </i:Interaction.Behaviors>
+        </PasswordBox>
+        <Button Content=" Log In " HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="75" Click="login" />
+        <Button Content=" Register " CommandParameter="1"  HorizontalAlignment="Left" Margin="131,215,0,0" VerticalAlignment="Top" Width="75" Click="registration"/>
+
     </Grid>
 </Page>

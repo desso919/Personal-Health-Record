@@ -11,7 +11,9 @@ namespace Personal.Health.Services
     {
         Patient GetPatient(long id);
 
-        Patient Login(string username, string password);
+        Patient LoginWithUsername(string username, string password);
+
+        Patient LoginWithEGN(string username, string password);
 
         Boolean RegisterUser(Patient patientToBeAdded);
     }

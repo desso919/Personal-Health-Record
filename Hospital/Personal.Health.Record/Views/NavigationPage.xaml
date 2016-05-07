@@ -10,9 +10,9 @@
 	  Title="Personal Health Application" Height="600" Width="850">
 
     <Page.DataContext>
-        <local:PatientViewModel/>
+        <local:NavigationViewModel/>
     </Page.DataContext>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -32,14 +32,53 @@
         <!-- Application details -->
         <Label Content="Your personal health record application" FontStyle="Oblique" 
                HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="482"/>
-        <Button Content="View Profile"  Command="{Binding ShowPatientCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,141,0,0" Click="ViewProfile"/>
-        <Button Content="View History" HorizontalAlignment="Left" Margin="50,248,0,0" VerticalAlignment="Top" Width="301" Click="ViewHistory"/>
-        <Button Content="Add New History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,322,0,0" Click="AddHistory"/>
-        <Button Content="Create New Visitation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,358,0,0" Click="CreateNewVisitation"/>
-        <Button Content="View Scheduled Visitations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,287,0,0" Click="ViewScheduledVisitations"/>
-        <Button Content="View Hospitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,177,0,0" Click="ViewHospitals"/>
-        <Button Content="View Doctors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Margin="50,212,0,0" Click="ViewDoctors"/>
+        <Button Content="View Profile"  Command="{Binding ShowPatientCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,141,0,0" Click="ViewProfile"/>
+        <Button Content="View History" HorizontalAlignment="Left" Margin="50,248,0,0" VerticalAlignment="Top" Width="180" Click="ViewHistory"/>
+        <Button Content="Add New History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,322,0,0" Click="AddHistory"/>
+        <Button Content="Create New Visitation" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,358,0,0" Click="CreateNewVisitation"/>
+        <Button Content="View Scheduled Visitations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,287,0,0" Click="ViewScheduledVisitations"/>
+        <Button Content="View Hospitals" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,177,0,0" Click="ViewHospitals"/>
+        <Button Content="View Doctors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="50,212,0,0" Click="ViewDoctors"/>
 
-        <Image  gif:ImageBehavior.AnimatedSource="../Images/Animated/beat-heart.gif" Margin="26,398,64,23" />
+        <ListView Grid.Column="0" ItemsSource="{Binding Visitations}" Margin="0,141,47,75" HorizontalAlignment="Right" Width="532" >
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="../Images/Icons/scheduled.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="32"/>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text="Hospital: " />
+                            <TextBlock Text="{Binding HospitalId}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="Doctor: " />
+                            <TextBlock Text="{Binding DoctorId}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="Reason: " />
+                            <TextBlock Text="{Binding Reason}" FontWeight="Bold" />
+                            <TextBlock Text=", " />
+                            <TextBlock Text="Description: " />
+                            <TextBlock Text="{Binding Description}" FontWeight="Bold" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Text=" Plan Date : (" />
+                            <TextBlock Text="{Binding Date}"
+                             TextDecorations="Underline" Foreground="Blue" />
+                            <TextBlock Text=")" />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
     </Grid>
 </Page>

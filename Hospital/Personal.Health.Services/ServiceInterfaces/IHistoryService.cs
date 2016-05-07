@@ -13,10 +13,6 @@ namespace Personal.Health.Services
 
         List<History> GetAllHistoryForThisPatient(long patientId);
 
-        List<History> GetAllHistoryFromHospital(long hospitalId);
-
-        List<History> GetAllHistoryByDoctor(long doctorId);
-
         Boolean addHistory(History history);
     }
 }

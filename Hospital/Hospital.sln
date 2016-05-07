@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personal.Health.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personal.Health.Services.Impl", "Personal.Health.Services.Impl\Personal.Health.Services.Impl.csproj", "{08CAECB4-BC4D-4EC2-8669-D581D82207CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personal.Health.Care.DesktopApp", "Personal.Health.Care.DesktopApp\Personal.Health.Care.DesktopApp.csproj", "{5595FA59-BBEB-41C8-A951-310C8EDCFF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NInjectConfigProject", "NInjectConfigProject\NInjectConfigProject.csproj", "{964CA4C5-CABF-4BDD-AFA9-CD15D7CCA645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{08CAECB4-BC4D-4EC2-8669-D581D82207CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CAECB4-BC4D-4EC2-8669-D581D82207CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CAECB4-BC4D-4EC2-8669-D581D82207CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5595FA59-BBEB-41C8-A951-310C8EDCFF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5595FA59-BBEB-41C8-A951-310C8EDCFF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5595FA59-BBEB-41C8-A951-310C8EDCFF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5595FA59-BBEB-41C8-A951-310C8EDCFF39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{964CA4C5-CABF-4BDD-AFA9-CD15D7CCA645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{964CA4C5-CABF-4BDD-AFA9-CD15D7CCA645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{964CA4C5-CABF-4BDD-AFA9-CD15D7CCA645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{964CA4C5-CABF-4BDD-AFA9-CD15D7CCA645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,7 @@
 ﻿using Hospital.Models;
 using Personal.Health.Record.Models;
+using Personal.Health.Record.Ninject;
+using Personal.Health.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,19 +10,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Ninject;
 
 namespace Personal.Health.Record.ViewModels
 {
     public class DoctorsViewModel : INotifyPropertyChanged
     {
-        private DoctorsModel doctorsModel;
+        private IDoctorService service;
         private List<Doctor> doctors;
 
         public DoctorsViewModel()
         {
             showDoctorsCommand = new RelayCommand(ShowDoctors, param => this.canExecute);
             toggleExecuteCommand = new RelayCommand(ChangeCanExecute);
-            doctorsModel = new DoctorsModel();
+            service = NinjectConfig.Container.Get<IDoctorService>();
         }
 
         #region Properties 
@@ -77,7 +80,7 @@ namespace Personal.Health.Record.ViewModels
         public void ShowDoctors(object obj)
         {
 
-            Doctors = doctorsModel.getDoctors();
+            Doctors = service.GetAllDoctors();
         } 
         #endregion
 

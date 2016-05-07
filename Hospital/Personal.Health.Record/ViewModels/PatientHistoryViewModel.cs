@@ -1,4 +1,5 @@
 ﻿using Hospital.Models;
+using Personal.Health.Record.Ninject;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
@@ -8,15 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Ninject;
 
 namespace Personal.Health.Record.ViewModels
 {
     class PatientHistoryViewModel : INotifyPropertyChanged
     {
+        private IHistoryService service;
         private List<History> histories;
 
          public PatientHistoryViewModel()
         {
+            service = NinjectConfig.Container.Get<IHistoryService>();
             showHistoriesCommand = new RelayCommand(ShowHistories, param => this.canExecute);
             toggleExecuteCommand = new RelayCommand(ChangeCanExecute);
         }
@@ -74,19 +78,7 @@ namespace Personal.Health.Record.ViewModels
 
         public void ShowHistories(object obj)
         {
-            IHistoryService historyService = new HistoryService();
-            IDoctorService doctorService = new DoctorService();
-            IHospitalService hospitalService = new HospitalService();
-            List<History> histories = historyService.GetAllHistoryForThisPatient(1);
-
-            foreach(History history in histories) 
-            {
-                HospitalModel hospital = hospitalService.GetHispital(history.HistoryId);
-                Doctor doctor = doctorService.getDoctor(history.DoctorId);
-                history.Doctor = doctor.FirstName + " " + doctor.SecondName + " " + doctor.LastName;
-                history.Hospital = hospital.Name;
-            }
-            Histories = histories;
+            Histories = service.GetAllHistoryForThisPatient(1);
         } 
         #endregion
 

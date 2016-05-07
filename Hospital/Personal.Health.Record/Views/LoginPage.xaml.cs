@@ -31,5 +31,11 @@ namespace Personal.Health.Record.Views
             NavigationPage navi = new NavigationPage();
             this.NavigationService.Navigate(navi);
         }
+
+        private void registration(object sender, RoutedEventArgs e)
+        {
+            RegistrationView registration = new RegistrationView();
+            this.NavigationService.Navigate(registration);
+        }
     }
 }

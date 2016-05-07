@@ -1,4 +1,5 @@
 ﻿using Hospital.Models;
+using Personal.Health.Record.Ninject;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
@@ -8,15 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Ninject;
 
 namespace Personal.Health.Record.ViewModels
 {
     class HospitalsViewModel : INotifyPropertyChanged
     {
         private List<HospitalModel> hospitals;
+        private IHospitalService service;
 
         public HospitalsViewModel()
         {
+            service = NinjectConfig.Container.Get<IHospitalService>();
             showHospitalsCommand = new RelayCommand(ShowHospitals, param => this.canExecute);
             toggleExecuteCommand = new RelayCommand(ChangeCanExecute);
         }
@@ -74,8 +78,7 @@ namespace Personal.Health.Record.ViewModels
 
         public void ShowHospitals(object obj)
         {
-            IHospitalService hospitalService = new HospitalService();
-            Hospitals = hospitalService.GetAllHispitals();
+            Hospitals = service.GetAllHispitals();
         } 
         #endregion
 

@@ -1,4 +1,4 @@
-﻿using Personal.Health.Services.Impl.HospitalServiceReference;
+﻿using Personal.Health.Services.Impl.HospitalWebService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +10,15 @@ namespace Personal.Health.Services.Impl.ServiceImpl
     public sealed class WebService
     {
         private static readonly object syncLock = new object();
-        private static HospitalWebServiceClient instance;
+        private static HospitalServiceClient instance;
 
-        public static HospitalWebServiceClient getInstance()
+        public static HospitalServiceClient getInstance()
         {
             lock (syncLock)
             {
                 if(instance == null) 
                 {
-                    instance = new HospitalWebServiceClient();
+                    instance = new HospitalServiceClient();
                 }
                  return instance;
             }     

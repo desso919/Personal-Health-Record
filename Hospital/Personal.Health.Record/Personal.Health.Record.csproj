@@ -34,6 +34,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FirstFloor.ModernUI">
+      <HintPath>..\packages\ModernUI.WPF.1.0.9\lib\net45\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Blend.Interactivity.Wpf.1.0.1340.0\lib\net\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -45,6 +55,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -88,7 +101,9 @@
     <Compile Include="Models\HospitalsModel.cs" />
     <Compile Include="Models\PatientDetailsModel.cs" />
     <Compile Include="Models\SchedulingVisitationModul.cs" />
-    <Compile Include="Ninject\NinjectConfig.cs" />
+    <Compile Include="Utilities\PasswordBindingBehavior.cs" />
+    <Compile Include="Utilities\PasswordBoxBindingBehavior.cs" />
+    <Compile Include="Utilities\SecurityUtil.cs" />
     <Compile Include="ViewModels\AddHistoryViewModel.cs" />
     <Compile Include="ViewModels\DoctorsViewModel.cs" />
     <Compile Include="ViewModels\HospitalsViewModel.cs" />
@@ -97,6 +112,7 @@
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\PatientHistoryViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ScheduledVisitationsViewModel.cs" />
     <Compile Include="ViewModels\SchedulingVisitationViewModel.cs" />
@@ -120,6 +136,9 @@
     </Compile>
     <Compile Include="Views\PatientHistoryPage.xaml.cs">
       <DependentUpon>PatientHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationView.xaml.cs">
+      <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScheduledVisitationsPage.xaml.cs">
       <DependentUpon>ScheduledVisitationsPage.xaml</DependentUpon>
@@ -167,6 +186,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\RegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ScheduledVisitationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,9 +228,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\start.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Animated\hospital_loop.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ninject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,5 @@
 ﻿using Hospital.Models;
 using Newtonsoft.Json;
-using Personal.Health.Services.Impl.HospitalServiceReference;
 using Personal.Health.Services.Impl.ServiceImpl;
 using System.Collections.Generic;
 using System.Linq;

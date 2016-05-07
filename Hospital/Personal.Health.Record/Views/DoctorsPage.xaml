@@ -33,7 +33,7 @@
 
         <Label Content="All Doctors: " Grid.Column="0" HorizontalAlignment="Left" Margin="21,75,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
 
-        <ListView Grid.Column="0" ItemsSource="{Binding Doctors}" >
+        <ListView Grid.Column="0" ItemsSource="{Binding Doctors}" Margin="21,106,0,68" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -70,8 +70,7 @@
         </ListView>
 
 
-        <Button Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="23,547,0,0" Command="{Binding ShowDoctorsCommand}" VerticalAlignment="Top" Width="75"/>
-        <Image  gif:ImageBehavior.AnimatedSource="../Images/Animated/beat-heart.gif" Margin="23,-16,27,395" Grid.Column="1" />
+        <Button Content="Button" HorizontalAlignment="Left" Margin="26,512,0,0" Command="{Binding ShowDoctorsCommand}" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
 
         <!--   <Label Content="Hospital Information: " Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,121,0,0" FontWeight="Bold" VerticalAlignment="Top" Width="170"/>
         <ListBox Name="Hospital" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="21,152,0,27" Width="354"/>

@@ -1,5 +1,6 @@
 ﻿using Hospital.Models;
 using Personal.Health.Record.Models;
+using Personal.Health.Record.Ninject;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
 using System;
@@ -9,15 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Ninject;
 
 namespace Personal.Health.Record.ViewModels
 {
     public class PatientViewModel : INotifyPropertyChanged
     {
         private Patient logedInPatient;
+        private IPatientService service;
 
         public PatientViewModel()
         {
+            service = NinjectConfig.Container.Get<IPatientService>();
             showPatientCommand = new RelayCommand(showPatient);
         }
 
@@ -46,8 +50,7 @@ namespace Personal.Health.Record.ViewModels
 
         private void showPatient(object id)
         {
-            IPatientService patientService = new PatientService();
-            LogedInPatient =  patientService.GetPatient(1);
+            LogedInPatient = service.GetPatient(1);
         }
         #endregion
     }
