@@ -8,13 +8,19 @@ namespace Hospital.Models
 {
     public class History
     {
-        public long HistoryId { get; set; }
-
         public long PatientId { get; set; }
 
         public long HospitalId { get; set; }
 
         public long DoctorId { get; set; }
+
+        public HospitalModel HospitalObject { get; set; }
+
+        public Doctor DoctorObject { get; set; }
+
+        public string Hospital { get; set; }
+
+        public string Doctor { get; set; }
 
         public string Reason { get; set; }
 
@@ -23,10 +29,5 @@ namespace Hospital.Models
         public string Description { get; set; }
 
         public string Date { get; set; }
-
-
-        public string Hospital { get; set; }
-
-        public string Doctor { get; set; }
     }
 }

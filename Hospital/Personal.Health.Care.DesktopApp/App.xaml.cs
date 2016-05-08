@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Personal.Health.Care.DesktopApp.Pages.UserManagement;
+using NInjectConfigProject;
 
 namespace Personal.Health.Care.DesktopApp
 {
@@ -17,6 +18,7 @@ namespace Personal.Health.Care.DesktopApp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            NinjectConfig.ConfigureContainer();
             LoginView login = new LoginView();
             login.Show();
         }

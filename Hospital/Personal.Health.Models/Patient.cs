@@ -30,7 +30,7 @@ namespace Hospital.Models
 
         public string FullName
         {
-            get { return string.Format("{0} {1} {2}", FirstName, SecondName, LastName); }
+            get { return string.Format("{0} {1}", FirstName, LastName); }
         }
     }
 

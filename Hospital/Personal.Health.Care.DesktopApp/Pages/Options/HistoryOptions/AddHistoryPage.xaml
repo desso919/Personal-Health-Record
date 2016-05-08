@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.Options.HistoryOptions.AddHistoryPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="310" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <local:AddHistoryViewModel/>
+    </UserControl.DataContext>
+
+    <Grid Style="{StaticResource ContentRoot}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new medical history" Style="{StaticResource Heading2}" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox Name="hospitalsComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding History.HospitalObject}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=ShowHospital}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Name="doctorsComboBox" Grid.Row="2" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding History.DoctorObject}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                        <TextBlock Text="{Binding Path=ShowDoctor}" />
+    
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Date:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <DatePicker Name="DatePicker" Grid.Row="3" Grid.Column="1" Text="{Binding History.Date,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="ReasonTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding History.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="Diagnose:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="DiagnoseTextBox" Grid.Row="5" Grid.Column="1" Text="{Binding History.Diagnose, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="DescTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding History.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
+
+        <Button Grid.Row="7" Grid.Column="1" Content="Add" Command="{Binding AddHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
+
+       <!-- <ComboBox ItemsSource="{Binding Path=Doctors}" Height="40" Margin="164,152,-96,74" RenderTransformOrigin="0.59,0.675" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox ItemsSource="{Binding Path=Hospitals}" Width="200" Height="40" Margin="164,82,-96,144">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox> -->
+      
+    </Grid>
+</UserControl>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.NavigationTabs
+namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for HistoryPage.xaml
+    /// Interaction logic for HistoryView.xaml
     /// </summary>
-    public partial class HistoryPage : UserControl
+    public partial class HistoryView : UserControl
     {
-        public HistoryPage()
+        public HistoryView()
         {
             InitializeComponent();
         }

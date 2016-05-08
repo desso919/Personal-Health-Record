@@ -18,11 +18,25 @@ namespace Personal.Health.Services.Impl
 
         public List<ScheduledVisitation> GetAllScheduledVisitationsForThisPatient(long patientId)
         {
+            IDoctorService doctorService = new DoctorService();
+            IHospitalService hospitalService = new HospitalService();
             string response = WebService.getInstance().GetVisitationByPatientID(patientId);
-            if(response.Equals("{}")) {
+
+            if (response.Equals("{}"))
+            {
                 return new List<ScheduledVisitation>();
             }
+            
             List<ScheduledVisitation> visits = JsonConvert.DeserializeObject<List<ScheduledVisitation>>(response);
+
+            foreach (ScheduledVisitation visitation in visits)
+            {
+                HospitalModel hospital = hospitalService.GetHispital(visitation.HospitalId);
+                Doctor doctor = doctorService.getDoctor(visitation.DoctorId);
+                visitation.Hospital = hospital;
+                visitation.Doctor = doctor;
+                
+            }
             return visits;
         }
 

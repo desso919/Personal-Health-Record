@@ -16,6 +16,12 @@ namespace Hospital.Models
 
         public long DoctorId { get; set; }
 
+        public Patient Patient { get; set; }
+
+        public HospitalModel Hospital { get; set; }
+
+        public Doctor Doctor { get; set; }
+
         public string Reason { get; set; }
 
         public string Description { get; set; }

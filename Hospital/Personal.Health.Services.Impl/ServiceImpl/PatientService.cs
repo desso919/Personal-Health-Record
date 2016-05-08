@@ -9,22 +9,37 @@ namespace Personal.Health.Services.Impl
     {
         public Patient GetPatient(long id)
         {
-            return JsonConvert.DeserializeObject<Patient>(WebService.getInstance().GetPatient(id));
+
+            string result = WebService.getInstance().GetPatient(id);
+            if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
+
+            return JsonConvert.DeserializeObject<Patient>(result);
         }
 
         public Patient LoginWithUsername(string username, string password)
         {
-            return JsonConvert.DeserializeObject<Patient>(WebService.getInstance().GetPatientByUsernameAndPassword(username, password));
+            string result = WebService.getInstance().GetPatientByUsernameAndPassword(username, password);
+            if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
+
+            return JsonConvert.DeserializeObject<Patient>(result);
         }
 
         public Patient LoginWithEGN(string egn, string password)
         {
-            return JsonConvert.DeserializeObject<Patient>(WebService.getInstance().GetPatientByEGNAndPassword(egn, password));
+            string result = WebService.getInstance().GetPatientByEGNAndPassword(egn, password);
+            if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
+
+            return JsonConvert.DeserializeObject<Patient>(result);
         }
 
-        public Boolean RegisterUser(Patient patientToBeAdded)
+        public Boolean RegisterUser(Patient patient)
         {
-            return true;
+            bool result = WebService.getInstance().AddNewPatient(patient.Username, patient.Password, patient.FirstName, patient.SecondName, patient.LastName, patient.EGN, patient.Gender, patient.Age, patient.BirhtDate);
+            if (result.Equals(ServicesUtils.TRUE)) 
+            { 
+                return true; 
+            }
+            return false;
         }
     }
 }

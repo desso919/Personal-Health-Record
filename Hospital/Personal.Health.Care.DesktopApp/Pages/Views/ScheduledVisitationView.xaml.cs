@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.NavigationTabs
+namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for RecommendedVisitationsPage.xaml
+    /// Interaction logic for ScheduledVisitationView.xaml
     /// </summary>
-    public partial class RecommendedVisitationsPage : UserControl
+    public partial class ScheduledVisitationView : UserControl
     {
-        public RecommendedVisitationsPage()
+        public ScheduledVisitationView()
         {
             InitializeComponent();
         }

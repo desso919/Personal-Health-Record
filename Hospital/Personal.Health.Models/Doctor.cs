@@ -17,5 +17,17 @@ namespace Hospital.Models
         public string LastName { get; set; }
 
         public string Specialization { get; set; }
+
+        public int Rating { get; set; }
+
+        public string Name
+        {
+            get { return string.Format("{0} {1}", FirstName, LastName); }
+        }
+
+        public string ShowDoctor
+        {
+            get { return string.Format("{0} {1}          {2}", FirstName, LastName, Specialization); }
+        }
     }
 }

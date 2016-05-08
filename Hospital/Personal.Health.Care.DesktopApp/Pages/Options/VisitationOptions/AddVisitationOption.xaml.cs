@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.NavigationTabs
+namespace Personal.Health.Care.DesktopApp.Pages.Options.VisitationOptions
 {
     /// <summary>
-    /// Interaction logic for ProfilePage.xaml
+    /// Interaction logic for AddVisitationOption.xaml
     /// </summary>
-    public partial class ProfilePage : UserControl
+    public partial class AddVisitationOption : UserControl
     {
-        public ProfilePage()
+        public AddVisitationOption()
         {
             InitializeComponent();
         }

@@ -6,13 +6,23 @@
       xmlns:local="clr-namespace:Personal.Health.Record.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-	  Title="Personal Health Application - Add Medical History" Height="600" Width="850">   
-    
+	  Title="Personal Health Application - Add Medical History" Height="600" Width="850">
+
     <Page.DataContext>
         <local:AddHistoryViewModel/>
     </Page.DataContext>
-    
+
+
+    <Page.Resources>
+        <DataTemplate x:Key="cmbTemplate">
+            <WrapPanel Margin="0 5 0 5" Height="80">
+                <Label Content="{Binding Path=Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+            </WrapPanel>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -32,20 +42,42 @@
         <Label Content="Complete The Following Fields To Add New Health Medical History  " FontStyle="Oblique" 
                HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="482"/>
 
-        <Label Content="Reason:" HorizontalAlignment="Left" Margin="27,303,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label Content="Reason:" HorizontalAlignment="Left" Margin="27,285,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Diagnose: " HorizontalAlignment="Left" Margin="27,345,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Notes / Description: " HorizontalAlignment="Left" Margin="27,424,0,0" VerticalAlignment="Top" Width="117"/>
-        <Label Content="Hospital:" HorizontalAlignment="Left" Margin="27,100,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label Content="Hospital:" HorizontalAlignment="Left" Margin="27,82,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Doctor:" HorizontalAlignment="Left" Margin="27,152,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="Date:" HorizontalAlignment="Left" Margin="27,216,0,0" VerticalAlignment="Top" Width="117"/>
 
-        <ComboBox Name="HispitalId" Text="{Binding HospitalId}" HorizontalAlignment="Left" Margin="164,104,0,0" VerticalAlignment="Top" Width="295"/>
-        <ComboBox Name="DoctorId" Text="{Binding HospitalId}" HorizontalAlignment="Left" Margin="164,152,0,0" VerticalAlignment="Top" Width="295"/>
-        <TextBox Name="Diagnose" Text="{Binding Diagnose}" HorizontalAlignment="Left" Height="55" Margin="164,348,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
-        <TextBox Name="Reason" Text="{Binding Reason}" HorizontalAlignment="Left" Height="23" Margin="164,306,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="295"/>
-        <TextBox Name="Description" Text="{Binding Description}" HorizontalAlignment="Left" Height="91" Margin="164,427,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="647"/>
-        <DatePicker Name="Data" Text="{Binding Date}" HorizontalAlignment="Left" Margin="164,218,0,0" VerticalAlignment="Top" Width="295"/>
-       
-        <Button Content="Add New History" CommandParameter="1" HorizontalAlignment="Left" Margin="556,267,0,0" VerticalAlignment="Top" Width="173" Command="{Binding AddHistoryCommand}" Height="75"/>
+        <TextBox Name="Diagnose" Text="{Binding Diagnose}" HorizontalAlignment="Left" Height="58" Margin="164,345,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="400"/>
+        <TextBox Name="Reason" Text="{Binding Reason}" HorizontalAlignment="Left" Height="26" Margin="164,285,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="400"/>
+        <TextBox Name="Description" Text="{Binding Description}" HorizontalAlignment="Left" Height="91" Margin="164,427,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="400"/>
+        <DatePicker Name="Data" Text="{Binding Date}" HorizontalAlignment="Left" Margin="164,218,0,0" VerticalAlignment="Top" Width="400"/>
+
+
+        <ComboBox ItemsSource="{Binding Path=Doctors}" Margin="164,152,286,407" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox ItemsSource="{Binding Path=Hospitals}" Margin="164,82,286,478">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Name}" />
+                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <Button Content="Add New History" CommandParameter="1" HorizontalAlignment="Left" Margin="164,544,0,0" VerticalAlignment="Top" Width="122" Command="{Binding AddHistoryCommand}" Height="34"/>
     </Grid>
 </Page>

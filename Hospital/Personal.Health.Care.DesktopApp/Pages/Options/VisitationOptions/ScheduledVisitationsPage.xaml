@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.NavigationTabs.VisitationsPage"
+﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.Options.VisitationOptions.VisitationsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +15,7 @@
                 <mui:Link DisplayName="This Week" />
                 <mui:Link DisplayName="This Month" />
                 <mui:Link DisplayName="This Year" />
-                <mui:Link DisplayName="See All" />
+                <mui:Link DisplayName="See All" Source="/Pages/Views/ScheduledVisitationView.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

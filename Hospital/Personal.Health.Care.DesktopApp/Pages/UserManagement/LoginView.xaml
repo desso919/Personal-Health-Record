@@ -17,6 +17,10 @@
         <local:LoginViewModel/>
     </Window.DataContext>
 
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{ Binding LoginCommand}" />
+    </Window.InputBindings>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -42,8 +46,8 @@
                 <utilities:PasswordBoxBindingBehavior Password="{Binding Password}" />
             </i:Interaction.Behaviors>
         </PasswordBox>
-        <Button Content=" Log In " Command="{Binding LoginCommand}" HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1" />
-        <Button Content=" Register " CommandParameter="1"  HorizontalAlignment="Left" Margin="140,215,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
+        <Button Content="Log In" HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="90" Command="{Binding LoginCommand}" />
+        <Button Content="Register" HorizontalAlignment="Left" Margin="140,215,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
 
     </Grid>
 </mui:ModernWindow>

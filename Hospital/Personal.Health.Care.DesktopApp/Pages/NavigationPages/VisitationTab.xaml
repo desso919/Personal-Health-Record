@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.NavigationTabs.HistoryPage"
+﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.NavigationPages.VisitationTab"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,14 +8,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
         <!-- TODO: set @SelectedSource -->
-        <mui:ModernTab Layout="List">
+        <mui:ModernTab Layout="Tab" SelectedSource="Pages/Options/VisitationOptions/ScheduledVisitationsPage.xaml">
             <mui:ModernTab.Links>
                 <!-- TODO: set @Source -->
-                <mui:Link DisplayName="Yesterday"/>
-                <mui:Link DisplayName="Last Week" />
-                <mui:Link DisplayName="Last Month"/>
-                <mui:Link DisplayName="Last Year" />
-                <mui:Link DisplayName="See All" />
+                <mui:Link DisplayName="Scheduled visitations" Source="Pages/Options/VisitationOptions/ScheduledVisitationsPage.xaml"/>
+                <mui:Link DisplayName="Scheduling new visitation"  Source="Pages/Options/VisitationOptions/AddVisitationOption.xaml"/>
+                <mui:Link DisplayName="Recommended visitations" />
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

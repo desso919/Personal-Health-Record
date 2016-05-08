@@ -68,10 +68,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages\NavigationPages\RecommendedVisitationsTab.xaml.cs">
+      <DependentUpon>RecommendedVisitationsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Options\HistoryOptions\AddHistoryPage.xaml.cs">
+      <DependentUpon>AddHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NavigationPages\HistoryTab.xaml.cs">
+      <DependentUpon>HistoryTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NavigationPages\VisitationTab.xaml.cs">
+      <DependentUpon>VisitationTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Options\VisitationOptions\AddVisitationOption.xaml.cs">
+      <DependentUpon>AddVisitationOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\HistoryView.xaml.cs">
+      <DependentUpon>HistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\ScheduledVisitationView.xaml.cs">
+      <DependentUpon>ScheduledVisitationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utills\PasswordBoxBindingBehavior.cs" />
     <Compile Include="Utills\RelayCommand.cs" />
     <Compile Include="Utills\SecurityUtil.cs" />
+    <Compile Include="ViewModels\AddHistoryViewModel.cs" />
+    <Compile Include="ViewModels\AddVisitationViewModel.cs" />
+    <Compile Include="ViewModels\HistoryViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\LoggedInPatient.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SheduledVisitationsViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,19 +107,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\NavigationTabs\HistoryPage.xaml">
+    <Page Include="Pages\NavigationPages\RecommendedVisitationsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NavigationTabs\ProfilePage.xaml">
+    <Page Include="Pages\Options\HistoryOptions\AddHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NavigationTabs\RecommendedVisitationsPage.xaml">
+    <Page Include="Pages\NavigationPages\HistoryTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NavigationTabs\VisitationsPage.xaml">
+    <Page Include="Pages\NavigationPages\VisitationTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Options\HistoryOptions\MyHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Options\VisitationOptions\AddVisitationOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Options\VisitationOptions\ScheduledVisitationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -100,17 +139,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Pages\NavigationTabs\HistoryPage.xaml.cs">
-      <DependentUpon>HistoryPage.xaml</DependentUpon>
+    <Compile Include="Pages\Options\HistoryOptions\MyHistoryPage.xaml.cs">
+      <DependentUpon>MyHistoryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NavigationTabs\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\NavigationTabs\RecommendedVisitationsPage.xaml.cs">
-      <DependentUpon>RecommendedVisitationsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\NavigationTabs\VisitationsPage.xaml.cs">
-      <DependentUpon>VisitationsPage.xaml</DependentUpon>
+    <Compile Include="Pages\Options\VisitationOptions\ScheduledVisitationsPage.xaml.cs">
+      <DependentUpon>ScheduledVisitationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Settings\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
@@ -152,17 +185,28 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Views\HistoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\ScheduledVisitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\Icons\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Images\Icons\doctor.png" />
+    <Content Include="Images\Icons\history.png" />
+    <Content Include="Images\Icons\hospital.png" />
+    <Content Include="Images\Icons\scheduled.png" />
     <Content Include="Images\Pictures\start.jpg" />
     <Content Include="Pages\UserManagement\start.jpg" />
+    <Content Include="Pages\Views\scheduled.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NInjectConfigProject\NInjectConfigProject.csproj">

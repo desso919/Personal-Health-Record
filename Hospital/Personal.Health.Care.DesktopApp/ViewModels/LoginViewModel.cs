@@ -87,6 +87,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             if (LoginCredential == null || Password == null)
             {
                 MessageBox.Show(" Please enter username and password first!");
+                return;
             }
 
             if (isEGN(LoginCredential))
@@ -100,7 +101,19 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (patient != null)
             {
-                MessageBox.Show(" Welcome : " + patient.FullName);
+
+                var loginWindow = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+                if (loginWindow != null)
+                {
+                    LoggedInPatient.Init(patient);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    loginWindow.Close();                                
+                }
+                else 
+                {
+                    MessageBox.Show(" Something went wrong! ");
+                }                       
             }
             else
             {

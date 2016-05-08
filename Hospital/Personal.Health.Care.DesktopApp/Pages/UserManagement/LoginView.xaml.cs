@@ -33,11 +33,12 @@ namespace Personal.Health.Care.DesktopApp.Pages.UserManagement
             reg.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MainWindow home = new MainWindow();
-            this.Close();
-            home.Show();
-        }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    MainWindow reg = new MainWindow();
+        //    this.Close();
+        //    reg.Show();
+
+        //}
     }
 }
