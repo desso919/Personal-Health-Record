@@ -8,6 +8,29 @@ namespace Hospital.Models
 {
     public class Patient
     {
+        private const string MALE = "Male";
+        private const string FEMALE = "Female";
+        private bool isMale;
+
+
+        public Patient()
+        {
+            isMale = true;           
+        }
+
+        public bool IsMale { get { return isMale; } set { isMale = value; } }
+        public string Gender 
+        { 
+            get 
+            {
+                if (IsMale)
+                {
+                    return MALE; 
+                }
+                return FEMALE;
+            }
+        }
+
         public long Id { get; set; }
 
         public string Username { get; set; }
@@ -21,8 +44,6 @@ namespace Hospital.Models
         public string LastName { get; set; }
 
         public string EGN { get; set; }
-
-        public string Gender { get; set; }
 
         public int Age { get; set; }
 

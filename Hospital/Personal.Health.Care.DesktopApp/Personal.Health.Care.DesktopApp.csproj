@@ -83,6 +83,9 @@
     <Compile Include="Pages\Options\VisitationOptions\AddVisitationOption.xaml.cs">
       <DependentUpon>AddVisitationOption.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Views\AskDiagnoseView.xaml.cs">
+      <DependentUpon>AskDiagnoseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Views\HistoryView.xaml.cs">
       <DependentUpon>HistoryView.xaml</DependentUpon>
     </Compile>
@@ -92,12 +95,15 @@
     <Compile Include="Utills\PasswordBoxBindingBehavior.cs" />
     <Compile Include="Utills\RelayCommand.cs" />
     <Compile Include="Utills\SecurityUtil.cs" />
+    <Compile Include="Utills\Utill.cs" />
     <Compile Include="ViewModels\AddHistoryViewModel.cs" />
     <Compile Include="ViewModels\AddVisitationViewModel.cs" />
+    <Compile Include="ViewModels\AskDiagnoseViewModel.cs" />
     <Compile Include="ViewModels\HistoryViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoggedInPatient.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\SheduledVisitationsViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +191,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Views\AskDiagnoseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Views\HistoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,8 +215,6 @@
     <Content Include="Images\Icons\hospital.png" />
     <Content Include="Images\Icons\scheduled.png" />
     <Content Include="Images\Pictures\start.jpg" />
-    <Content Include="Pages\UserManagement\start.jpg" />
-    <Content Include="Pages\Views\scheduled.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NInjectConfigProject\NInjectConfigProject.csproj">

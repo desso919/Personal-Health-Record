@@ -28,7 +28,9 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         #endregion
 
         #region Properties
+
         public List<History> Histories { get { return histories; } set { histories = value; NotifyPropertyChanged(); } }
+
         #endregion
 
         #region INotifyPropertyChanged

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using Ninject;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using System.Windows.Input;
+using Personal.Health.Care.DesktopApp.Utills;
+using System.Windows;
+using Personal.Health.Care.DesktopApp.Pages.Views;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -17,18 +21,32 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         List<ScheduledVisitation> visitations;
         private IVisitationService service;
+        private IHistoryService historyService;
+        private ScheduledVisitation selectedVisitation;
+        private ICommand moveToHistoryCommand;
+        private string diagnose;
 
         #region Constructor
 
         public SheduledVisitationsViewModel()
         {
             service = NinjectConfig.Container.Get<IVisitationService>();
+            historyService = NinjectConfig.Container.Get<IHistoryService>();
+            moveToHistoryCommand = new RelayCommand(MoveToHistoryMethod);
+
             ShowScheduledVisitations();
         }
         #endregion
 
         #region Properties
+
         public List<ScheduledVisitation> Visitations { get { return visitations; } set { visitations = value; NotifyPropertyChanged(); } }
+
+        public ICommand MoveToHistoryCommand { get { return moveToHistoryCommand; } set { moveToHistoryCommand = value; NotifyPropertyChanged(); } }
+
+        public ScheduledVisitation SelectedVisitation { get { return selectedVisitation; } set { selectedVisitation = value; NotifyPropertyChanged(); } }
+
+        public string Diagnose { get { return diagnose; } set { diagnose = value; NotifyPropertyChanged(); } }
         #endregion
 
         #region INotifyPropertyChanged
@@ -42,11 +60,51 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         }
         #endregion
 
+
+        #region Move to history Code
+
+        public void MoveToHistoryMethod(object obj)
+        {
+            AskDiagnoseView dialog = new AskDiagnoseView();
+            dialog.ShowDialog();
+
+            if (dialog.ResponseText == null || dialog.ResponseText.Equals(String.Empty))
+            {
+                MessageBox.Show(" Cannot move without diagnose! ");
+                return;
+            }
+            History history = new History();
+            history.Patient = LoggedInPatient.GetPatient();
+            history.Hospital = SelectedVisitation.Hospital;
+            history.Doctor = SelectedVisitation.Doctor;
+            history.Reason = SelectedVisitation.Reason;
+            history.Diagnose = dialog.ResponseText;
+            history.Date = SelectedVisitation.Date;
+            history.Description = selectedVisitation.Description;
+
+
+            Boolean isAdded = historyService.addHistory(history);
+
+            if (isAdded)
+            {
+                new HistoryViewModel();
+                MessageBox.Show("  Moved Successfully! ");
+            }
+            else
+            {
+                MessageBox.Show(" Error while trying to Moved the selected visitation! ");
+            }
+        }
+
         public void ShowScheduledVisitations()
         {
             Visitations = service.GetAllScheduledVisitationsForThisPatient(LoggedInPatient.GetPatient().Id);
         }
 
-       
+        #endregion
+
+
+
+
     }
 }

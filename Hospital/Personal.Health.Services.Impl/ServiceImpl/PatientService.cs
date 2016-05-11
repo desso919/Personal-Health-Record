@@ -34,8 +34,14 @@ namespace Personal.Health.Services.Impl
 
         public Boolean RegisterUser(Patient patient)
         {
-            bool result = WebService.getInstance().AddNewPatient(patient.Username, patient.Password, patient.FirstName, patient.SecondName, patient.LastName, patient.EGN, patient.Gender, patient.Age, patient.BirhtDate);
-            if (result.Equals(ServicesUtils.TRUE)) 
+            if (patient.BirhtDate.Equals(String.Empty))
+            {
+                patient.BirhtDate = null;
+            }
+
+            bool isRegisted = WebService.getInstance().AddNewPatient(patient.Username, patient.Password, patient.FirstName, patient.SecondName, patient.LastName, patient.EGN, patient.Gender, patient.Age, patient.BirhtDate);
+            
+            if (isRegisted) 
             { 
                 return true; 
             }

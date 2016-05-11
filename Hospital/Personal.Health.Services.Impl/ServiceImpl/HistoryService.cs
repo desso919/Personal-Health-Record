@@ -17,23 +17,25 @@ namespace Personal.Health.Services.Impl
 
         public List<History> GetAllHistoryForThisPatient(long patientId)
         {
-            IDoctorService doctorService = new DoctorService();
-            IHospitalService hospitalService = new HospitalService();
-            List<History> histories = JsonConvert.DeserializeObject<List<History>>(WebService.getInstance().GetHospitalRecordByPatientID(patientId));
-            
-            foreach (History history in histories)
+            string response = WebService.getInstance().GetHospitalRecordByPatientID(patientId);
+            if (response.Equals(ServicesUtils.EMPTY_JSON))
             {
-                HospitalModel hospital = hospitalService.GetHispital(history.HospitalId);
-                Doctor doctor = doctorService.getDoctor(history.DoctorId);
-                history.Doctor = doctor.FirstName + " " + doctor.SecondName + " " + doctor.LastName;
-                history.Hospital = hospital.Name;
+                return new List<History>();
             }
-            return  histories;
+
+            return JsonConvert.DeserializeObject<List<History>>(response);       
         }
 
         public bool addHistory(History history)
         {
-            return true;
+            bool isAdded = WebService.getInstance().AddNewHospitalRecord(history.Patient.Id, history.Hospital.HospitalId, history.Doctor.DoctorId, history.Reason, history.Diagnose, history.Date, history.Description);
+
+            if(isAdded)
+            {
+                return true;
+            }
+            return false;
         }
+
     }
 }

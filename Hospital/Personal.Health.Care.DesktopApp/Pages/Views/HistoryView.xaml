@@ -14,7 +14,7 @@
         
     <Grid Style="{StaticResource ContentRoot}">
 
-        <ListView Grid.Column="0" ItemsSource="{Binding Histories}" HorizontalAlignment="Left" Width="Auto" >
+        <ListView ItemsSource="{Binding Histories}" HorizontalAlignment="Left" Width="Auto" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -27,18 +27,13 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <!--Image Source="../Images/Icons/history.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="32"/>-->
-
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text=" Reason: " />
+                            <TextBlock Text="Reason: " />
                             <TextBlock Text="{Binding Reason}" FontWeight="Bold" />
-                            <TextBlock Text=", " />
-                            <TextBlock Text=" Diagnose: " />
-                            <TextBlock Text="{Binding Diagnose}" FontWeight="Bold" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text=" Date: " />
-                            <TextBlock Text="{Binding Date}" Foreground="Blue"/>
+                            <TextBlock Text="Plan Date : " />
+                            <TextBlock Text="{Binding Date}" Foreground="Blue" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -90,13 +90,13 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                 return;
             }
 
-            if (isEGN(LoginCredential))
+            if (SecurityUtil.isEGN(LoginCredential))
             {
-                patient = service.LoginWithEGN(LoginCredential, SecurityUtil.ConvertToString(Password));
+                patient = service.LoginWithEGN(LoginCredential, SecurityUtil.HashPassword(Password));
             }
             else
             {
-                patient = service.LoginWithUsername(LoginCredential, SecurityUtil.ConvertToString(Password));
+                patient = service.LoginWithUsername(LoginCredential, SecurityUtil.HashPassword(Password));
             }
 
             if (patient != null)
@@ -119,13 +119,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             {
                 MessageBox.Show(" Wrong Username or password. Please try again!");
             }
-        }
-
-        private bool isEGN(string loginCredential)
-        {
-            string regExPattern = @"^[0-9]+$";
-            Regex pattern = new Regex(regExPattern);
-            return pattern.IsMatch(loginCredential);
         }
 
         #endregion

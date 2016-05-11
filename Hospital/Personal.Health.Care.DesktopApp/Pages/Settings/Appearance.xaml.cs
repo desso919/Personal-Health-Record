@@ -24,7 +24,7 @@ namespace Personal.Health.Care.DesktopApp.Pages.Settings
         {
             InitializeComponent();
 
-            // create and assign the appearance view model
+            // create and assign the appearance view registrationFormModel
             this.DataContext = new AppearanceViewModel();
         }
     }

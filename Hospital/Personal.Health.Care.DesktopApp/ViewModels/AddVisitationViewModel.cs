@@ -31,7 +31,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             service = NinjectConfig.Container.Get<IVisitationService>();
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
             Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
-            addVisitationCommand = new RelayCommand(AddHistoryRecord);
+            addVisitationCommand = new RelayCommand(AddVisitation);
             image = "../../Images/Icons/doctor.png";
         }
 
@@ -81,25 +81,25 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #endregion
 
-        #region Add History Code
+        #region Add Visitation Code
 
-        public void AddHistoryRecord(Object obj)
+        public void AddVisitation(Object obj)
         {
 
-            Visitation.PatientId = LoggedInPatient.GetPatient().Id;
-           // Boolean isAdded = service.AddNewScheduleVisitation(Visitation);
+            Visitation.Patient = LoggedInPatient.GetPatient();
+            Boolean isAdded = service.AddNewScheduleVisitation(Visitation);
 
-            Visitation = new ScheduledVisitation();
-
-
-            if (true)
+            if (isAdded)
             {
-                MessageBox.Show(" History Added Successfully! ");
+                new SheduledVisitationsViewModel();
+                MessageBox.Show(" Scheduled visitation Successfully! ");
             }
             else
             {
-                MessageBox.Show(" Error while trying to add history! ");
+                MessageBox.Show(" Error while trying to add Scheduled visitation! ");
             }
+
+            Visitation = new ScheduledVisitation();
         }
 
         #endregion

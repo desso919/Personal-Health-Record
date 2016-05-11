@@ -15,14 +15,15 @@
     <Grid Style="{StaticResource ContentRoot}">
         
         <Grid.RowDefinitions>
-            <RowDefinition/>           
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-        </Grid.ColumnDefinitions>      
-        
-        <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding Visitations}" HorizontalAlignment="Left" Width="Auto" >
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Row="0" Grid.Column="0" SelectedItem="{Binding SelectedVisitation}" ItemsSource="{Binding Visitations}" HorizontalAlignment="Left" Width="Auto" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -34,8 +35,6 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-
-                        <Image Source="scheduled.png" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Height="30"/>
 
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                             <TextBlock Text="Reason: " />
@@ -50,7 +49,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
-
-
+       <Button Grid.Row="1" Grid.Column="0" Content="Move To History" Command="{Binding MoveToHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150"/>
     </Grid>
 </UserControl>

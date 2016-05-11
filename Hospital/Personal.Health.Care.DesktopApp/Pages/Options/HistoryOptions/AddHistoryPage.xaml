@@ -33,7 +33,7 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new medical history" Style="{StaticResource Heading2}" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox Name="hospitalsComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding History.HospitalObject}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <ComboBox Name="hospitalsComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding History.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowHospital}" />
@@ -42,7 +42,7 @@
         </ComboBox>
 
         <Label Name="doctorsComboBox" Grid.Row="2" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding History.DoctorObject}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding History.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                         <TextBlock Text="{Binding Path=ShowDoctor}" />
@@ -66,28 +66,6 @@
         <TextBox Name="DescTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding History.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
 
         <Button Grid.Row="7" Grid.Column="1" Content="Add" Command="{Binding AddHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
-
-       <!-- <ComboBox ItemsSource="{Binding Path=Doctors}" Height="40" Margin="164,152,-96,74" RenderTransformOrigin="0.59,0.675" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Name}" />
-                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <ComboBox ItemsSource="{Binding Path=Hospitals}" Width="200" Height="40" Margin="164,82,-96,144">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Name}" />
-                        <TextBlock Text="{Binding Path=Rating, StringFormat=Rating: {0}}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox> -->
       
     </Grid>
 </UserControl>

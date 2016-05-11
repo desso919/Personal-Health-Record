@@ -10,7 +10,7 @@ using System.Windows.Media;
 namespace Personal.Health.Care.DesktopApp.Pages.Settings
 {
     /// <summary>
-    /// A simple view model for configuring theme, font and accent colors.
+    /// A simple view registrationFormModel for configuring theme, font and accent colors.
     /// </summary>
     public class AppearanceViewModel
         : NotifyPropertyChanged

@@ -10,7 +10,7 @@
         <!-- TODO: set @SelectedSource -->
         <mui:ModernTab Layout="Tab" SelectedSource="Pages/Options/HistoryOptions/MyHistoryPage.xaml">
             <mui:ModernTab.Links>
-                <mui:Link DisplayName="My history" Source="Pages/Options/HistoryOptions/MyHistoryPage.xaml" />
+                <mui:Link DisplayName="My history"  Source="Pages/Options/HistoryOptions/MyHistoryPage.xaml" />
                 <mui:Link DisplayName="Add history" Source="Pages/Options/HistoryOptions/AddHistoryPage.xaml"/>                
             </mui:ModernTab.Links>
         </mui:ModernTab>

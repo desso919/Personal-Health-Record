@@ -88,22 +88,19 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         public void AddHistoryRecord(object obj)
         {
 
-            History.PatientId = LoggedInPatient.GetPatient().Id;
-           // Boolean isAdded = service.addHistory(History);
-            History = new History();
-            
-            if (true)
+            History.Patient = LoggedInPatient.GetPatient();
+            Boolean isAdded = service.addHistory(History);
+
+            if (isAdded)
             {
+                new HistoryViewModel();
                 MessageBox.Show(" History Added Successfully! ");
             }
             else
             {
                 MessageBox.Show(" Error while trying to add history! ");
             }
-        }
-
-        private void ClearAll(Visual myMainWindow)
-        {            
+            History = new History();
         }
 
         #endregion
