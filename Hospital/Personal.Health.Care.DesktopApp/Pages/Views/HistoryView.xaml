@@ -23,10 +23,12 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="35"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
+                        <Image Grid.Column="0" HorizontalAlignment="Left" Grid.RowSpan="2" Source="../../Images/Icons/history.png" Height="32"/>
+                        
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                             <TextBlock Text="Reason: " />
                             <TextBlock Text="{Binding Reason}" FontWeight="Bold" />

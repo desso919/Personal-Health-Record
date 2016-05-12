@@ -14,24 +14,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.UserManagement
+namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for RegistrationView.xaml
+    /// Interaction logic for MessageWindow.xaml
     /// </summary>
-    public partial class RegistrationView : ModernWindow
+    public partial class MessageWindow : ModernDialog
     {
-        public RegistrationView()
+        public MessageWindow()
         {
             InitializeComponent();
+
+            // define the dialog buttons
+            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
         }
 
-        private void Cancel(object sender, RoutedEventArgs e)
+        public MessageWindow(string title, string message)
         {
-            LoginView login = new LoginView();
-            this.Close();
-            login.Show();
-
+            InitializeComponent();
+            this.Buttons = new Button[] { this.OkButton };
+            this.Title = title;
+            this.textMessage.Text = message;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.Options.VisitationOptions.AddVisitationOption"
+﻿<UserControl x:Class="Personal.Health.Care.DesktopApp.Pages.Options.TemplateOptions.AddTemplateOption"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,19 +7,18 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
+
     <UserControl.DataContext>
-        <local:AddVisitationViewModel/>
+        <local:AddTemplateViewModel/>
     </UserControl.DataContext>
-
+    
     <Grid Style="{StaticResource ContentRoot}">
-
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition />
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -29,7 +28,7 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new visitation" Style="{StaticResource Heading2}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new template" Style="{StaticResource Heading2}" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Visitation.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
@@ -39,7 +38,7 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        
+
         <Label Grid.Row="2" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Visitation.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
@@ -49,18 +48,14 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        
-        <Label Grid.Row="3" Grid.Column="0" Content="Plan Date:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
-        <DatePicker Grid.Row="3" Grid.Column="1" Text="{Binding Visitation.Date, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
-        <Label Grid.Row="4" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Visitation.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Visitation.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Visitation.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Visitation.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
 
-        <Button Grid.Row="6" Grid.Column="1" Content="Load Template" Command="{Binding LoadTemplateCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
-        <Button Grid.Row="6" Grid.Column="1" Content="Add" Command="{Binding AddVisitationCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="Add Template" Command="{Binding AddTemplateCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>

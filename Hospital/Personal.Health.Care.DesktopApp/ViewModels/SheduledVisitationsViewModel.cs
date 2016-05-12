@@ -33,7 +33,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             service = NinjectConfig.Container.Get<IVisitationService>();
             historyService = NinjectConfig.Container.Get<IHistoryService>();
             moveToHistoryCommand = new RelayCommand(MoveToHistoryMethod);
-
             ShowScheduledVisitations();
         }
         #endregion

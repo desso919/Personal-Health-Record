@@ -12,6 +12,7 @@ using System.Windows.Input;
 using Ninject;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using Personal.Health.Care.DesktopApp.Pages.Views;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -19,11 +20,11 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ICommand addVisitationCommand;
+        private ICommand loadTemplateCommand;
         private IVisitationService service;
         private List<HospitalModel> hospitals;
         private List<Doctor> doctors;
         private ScheduledVisitation visitation;
-        private string image;
 
         public AddVisitationViewModel()
         {
@@ -32,16 +33,11 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
             Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
             addVisitationCommand = new RelayCommand(AddVisitation);
-            image = "../../Images/Icons/doctor.png";
+            loadTemplateCommand = new RelayCommand(LoadTemplateMethod);
         }
 
         #region Properties
 
-        public string Image
-        {
-            get { return image; }
-            set { image = value; NotifyPropertyChanged(); } 
-        }
         public ScheduledVisitation Visitation 
         { 
             get { return visitation; } 
@@ -53,6 +49,8 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             get { return hospitals; }
             set { hospitals = value; NotifyPropertyChanged(); }
         }
+
+        public ICommand LoadTemplateCommand { get { return loadTemplateCommand; } set { loadTemplateCommand = value; NotifyPropertyChanged(); } }
 
         public List<Doctor> Doctors
         {
@@ -100,6 +98,13 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             }
 
             Visitation = new ScheduledVisitation();
+        }
+
+        public void LoadTemplateMethod(Object obj)
+        {
+            ChooseTemplateView chooseTemplate = new ChooseTemplateView();
+            chooseTemplate.ShowDialog();
+
         }
 
         #endregion

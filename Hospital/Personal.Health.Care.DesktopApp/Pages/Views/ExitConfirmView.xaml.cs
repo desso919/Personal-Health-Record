@@ -14,23 +14,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.UserManagement
+namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for RegistrationView.xaml
+    /// Interaction logic for ExitConfirmView.xaml
     /// </summary>
-    public partial class RegistrationView : ModernWindow
+    public partial class ExitConfirmView : ModernDialog
     {
-        public RegistrationView()
+        public bool isClickedYes;
+
+        public ExitConfirmView()
         {
             InitializeComponent();
+
+            // define the dialog buttons
+            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
         }
 
-        private void Cancel(object sender, RoutedEventArgs e)
+        public bool IsYesClicked()
         {
-            LoginView login = new LoginView();
-            this.Close();
-            login.Show();
+            return this.OkButton.IsPressed;
 
         }
     }

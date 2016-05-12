@@ -2,16 +2,52 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:MainPageViewModel/>
+    </UserControl.DataContext>
+
     <Grid Style="{StaticResource ContentRoot}">
-        <Frame Name="MyFrame"/>
-        <mui:ModernTab Layout="Tab" >
-            <mui:ModernTab.Links>
-                <mui:Link DisplayName="Profile" />
-            </mui:ModernTab.Links>
-        </mui:ModernTab>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Patient.WelcomeUser}" FontStyle="Oblique" Style="{StaticResource Heading2}" />
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Quick Start" FontStyle="Oblique"/>
+
+        <Controls:Tile Height="120" Width="230" Title="Visitatoin" Grid.Row="1" ToolTip="Quickly add a new visitation" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/VisitationOptions/AddVisitationOption.xaml" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+            <Image Source="../../Images/Icons/scheduled.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80"/>
+        </Controls:Tile>
+
+        <Controls:Tile Height="120" Width="230" Title="History" ToolTip="Quickly add a new history" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/HistoryOptions/AddHistoryPage.xaml"  HorizontalAlignment="Left"  VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+            <Image Source="../../Images/Icons/history2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>           
+        </Controls:Tile>
+
+        <Controls:Tile Height="120" Width="230" Title="Template" ToolTip="Quickly add a new template" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/TemplateOptions/AddTemplateOption.xaml"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+            <Image Source="../../Images/Icons/template.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
+        </Controls:Tile>
+
+        <Controls:Tile Height="120" Width="230" Title="Profile" ToolTip="View Profile" Command="NavigationCommands.GoToPage" CommandParameter="/Pages/Settings/PatientProfileView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+            <Image Source="../../Images/Icons/profile.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
+        </Controls:Tile>
+
+        <Controls:Tile Height="120" Width="230" Title="Help" Command="NavigationCommands.GoToPage" ToolTip="Show Help" CommandParameter="/Pages/Settings/HelpView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+            <Image Source="../../Images/Icons/help.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
+        </Controls:Tile>
+
     </Grid>
 </UserControl>

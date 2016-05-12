@@ -113,11 +113,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                 else 
                 {
                     MessageBox.Show(" Something went wrong! ");
+
                 }                       
             }
             else
             {
-                MessageBox.Show(" Wrong Username or password. Please try again!");
+                throw new Exception(" Wrong Username or password. Please try again!");
             }
         }
 

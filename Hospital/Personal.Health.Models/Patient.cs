@@ -51,7 +51,12 @@ namespace Hospital.Models
 
         public string FullName
         {
-            get { return string.Format("{0} {1}", FirstName, LastName); }
+            get { return string.Format("{0} {1} {2}", FirstName, SecondName, LastName); }
+        }
+
+        public string WelcomeUser
+        {
+            get { return string.Format("Welcome,  {0} {1}", FirstName, LastName); }
         }
     }
 

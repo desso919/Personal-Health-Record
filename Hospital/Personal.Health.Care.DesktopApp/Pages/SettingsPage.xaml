@@ -7,9 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Style="{StaticResource ContentRoot}">
-        <mui:ModernTab Layout="List" SelectedSource="/Pages/Settings/Appearance.xaml">
+        <mui:ModernTab Layout="List" SelectedSource="/Pages/Settings/PatientProfileView.xaml">
             <mui:ModernTab.Links>
+                <mui:Link DisplayName="profile" Source="/Pages/Settings/PatientProfileView.xaml" />    
                 <mui:Link DisplayName="appearance" Source="/Pages/Settings/Appearance.xaml" />
+                <mui:Link DisplayName="help" Source="/Pages/Settings/HelpView.xaml" />
                 <mui:Link DisplayName="about" Source="/Pages/Settings/About.xaml" />
             </mui:ModernTab.Links>
         </mui:ModernTab>

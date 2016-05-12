@@ -1,5 +1,4 @@
-﻿using FirstFloor.ModernUI.Windows.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,24 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Personal.Health.Care.DesktopApp.Pages.UserManagement
+namespace Personal.Health.Care.DesktopApp.Pages.Options.TemplateOptions
 {
     /// <summary>
-    /// Interaction logic for RegistrationView.xaml
+    /// Interaction logic for ViewTemplatesPage.xaml
     /// </summary>
-    public partial class RegistrationView : ModernWindow
+    public partial class ViewTemplatesPage : UserControl
     {
-        public RegistrationView()
+        public ViewTemplatesPage()
         {
             InitializeComponent();
-        }
-
-        private void Cancel(object sender, RoutedEventArgs e)
-        {
-            LoginView login = new LoginView();
-            this.Close();
-            login.Show();
-
         }
     }
 }

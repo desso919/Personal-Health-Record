@@ -14,12 +14,13 @@
     </Window.DataContext>
 
     <mui:ModernWindow.MenuLinkGroups>
-        <mui:LinkGroup DisplayName="Welcome">
+        <mui:LinkGroup DisplayName="Personal Health Record">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="Home" Source="/Pages/Home.xaml" />
                 <mui:Link DisplayName="Medical history"  Source="/Pages/NavigationPages/HistoryTab.xaml" />
                 <mui:Link DisplayName="Scheduled visitations" Source="/Pages/NavigationPages/VisitationTab.xaml"/>
                 <mui:Link DisplayName="Recommended visitations" Source="/Pages/NavigationPages/RecommendedVisitationsTab.xaml"/>
+                <mui:Link DisplayName="Templates" Source="/Pages/NavigationPages/TemplatesTab.xaml"/>
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="settings" GroupKey="settings">
@@ -31,6 +32,6 @@
     
     <mui:ModernWindow.TitleLinks>
         <mui:Link DisplayName="settings" Source="/Pages/SettingsPage.xaml" />
-        <mui:Link DisplayName="help" Source="https://github.com/firstfloorsoftware/mui" />
+        <mui:Link DisplayName="Log out"  Source="/Pages/Views/ExitConfirmView.xaml" />
     </mui:ModernWindow.TitleLinks>
 </mui:ModernWindow>

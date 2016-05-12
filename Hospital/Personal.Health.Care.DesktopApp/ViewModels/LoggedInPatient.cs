@@ -27,5 +27,14 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                 return loggedInPatient;
             }
         }  
+
+        public static void LogoutPatient()
+        {
+            lock (syncLock)
+            {
+                loggedInPatient = null;
+            }
+
+        }
     }
 }
