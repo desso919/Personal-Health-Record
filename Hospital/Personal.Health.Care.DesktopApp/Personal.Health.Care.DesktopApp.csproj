@@ -70,6 +70,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\MediatorClass.cs" />
     <Compile Include="Pages\NavigationPages\RecommendedVisitationsTab.xaml.cs">
       <DependentUpon>RecommendedVisitationsTab.xaml</DependentUpon>
     </Compile>
@@ -103,9 +104,6 @@
     <Compile Include="Pages\Views\AskDiagnoseView.xaml.cs">
       <DependentUpon>AskDiagnoseView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Views\ChooseTemplateView.xaml.cs">
-      <DependentUpon>ChooseTemplateView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Views\ExitConfirmView.xaml.cs">
       <DependentUpon>ExitConfirmView.xaml</DependentUpon>
     </Compile>
@@ -115,8 +113,17 @@
     <Compile Include="Pages\Views\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Views\MoveToVisitationView.xaml.cs">
+      <DependentUpon>MoveToVisitationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\RecommendedVisitationsView.xaml.cs">
+      <DependentUpon>RecommendedVisitationsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Views\ScheduledVisitationView.xaml.cs">
       <DependentUpon>ScheduledVisitationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Views\SelectTemplateView.xaml.cs">
+      <DependentUpon>SelectTemplateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utills\Messenger.cs" />
     <Compile Include="Utills\PasswordBoxBindingBehavior.cs" />
@@ -133,6 +140,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\RecommendedVisitationsViewModel.cs" />
     <Compile Include="ViewModels\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\SheduledVisitationsViewModel.cs" />
     <Compile Include="ViewModels\TemplatesViewModel.cs" />
@@ -246,10 +254,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Views\ChooseTemplateView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Views\ExitConfirmView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -262,7 +266,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Views\MoveToVisitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\RecommendedVisitationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Views\ScheduledVisitationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Views\SelectTemplateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,6 +297,8 @@
     <Resource Include="Images\Icons\scheduled.png" />
     <Resource Include="Images\Icons\template.png" />
     <Resource Include="Images\Icons\profile.png" />
+    <Resource Include="Images\Icons\templateIcon.jpg" />
+    <Resource Include="Images\Icons\rec.png" />
     <Content Include="Images\Icons\templates.png" />
     <Content Include="Images\Pictures\start.jpg" />
   </ItemGroup>

@@ -13,6 +13,8 @@ namespace Personal.Health.Services
 
         List<ScheduledVisitation> GetAllScheduledVisitationsForThisPatient(long patientId);
 
+        Boolean MakeVisitationHistory(long id, string diagnose);
+
         Boolean AddNewScheduleVisitation(ScheduledVisitation visitatin);
     }
 }

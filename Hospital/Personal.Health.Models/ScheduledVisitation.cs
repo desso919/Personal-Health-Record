@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +10,7 @@ namespace Hospital.Models
 {
     public class ScheduledVisitation
     {
-        public long VisitationId { get; set; }
+        public long Id { get; set; }
 
         public long PatientId { get; set; }
 
@@ -24,8 +26,8 @@ namespace Hospital.Models
 
         public string Reason { get; set; }
 
-        public string Description { get; set; }
-
         public string Date { get; set; }
+
+        public string Description { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         private List<HospitalModel> hospitals;
         private List<Doctor> doctors;
         private History history;
-        private string image;
 
         public AddHistoryViewModel()
         {
@@ -34,16 +33,10 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
             Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
             addHistoryCommand = new RelayCommand(AddHistoryRecord);
-            image = "../../Images/Icons/doctor.png";
         }
 
         #region Properties
 
-        public string Image
-        {
-            get { return image; }
-            set { image = value; NotifyPropertyChanged(); } 
-        }
         public History History 
         { 
             get { return history; } 

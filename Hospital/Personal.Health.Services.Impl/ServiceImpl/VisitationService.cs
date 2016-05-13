@@ -38,5 +38,16 @@ namespace Personal.Health.Services.Impl
             }
             return false;
         }
+
+
+        public bool MakeVisitationHistory(long id, string diagnose)
+        {
+            bool isAdded = WebService.getInstance().MakeVisitationHistory(id, diagnose);
+            if (isAdded)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

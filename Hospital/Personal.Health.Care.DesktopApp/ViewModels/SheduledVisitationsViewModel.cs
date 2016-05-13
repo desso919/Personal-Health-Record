@@ -72,22 +72,14 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                 MessageBox.Show(" Cannot move without diagnose! ");
                 return;
             }
-            History history = new History();
-            history.Patient = LoggedInPatient.GetPatient();
-            history.Hospital = SelectedVisitation.Hospital;
-            history.Doctor = SelectedVisitation.Doctor;
-            history.Reason = SelectedVisitation.Reason;
-            history.Diagnose = dialog.ResponseText;
-            history.Date = SelectedVisitation.Date;
-            history.Description = selectedVisitation.Description;
 
-
-            Boolean isAdded = historyService.addHistory(history);
+            Diagnose = dialog.ResponseText;
+            Boolean isAdded = service.MakeVisitationHistory(SelectedVisitation.Id, Diagnose);
 
             if (isAdded)
             {
-                new HistoryViewModel();
-                MessageBox.Show("  Moved Successfully! ");
+                ShowScheduledVisitations(); 
+                MessageBox.Show("  Moved Successfully! ");                
             }
             else
             {

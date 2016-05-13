@@ -23,6 +23,8 @@ namespace Personal.Health.Models
 
         public Doctor Doctor { get; set; }
 
+        public string Title { get; set; }
+
         public string Reason { get; set; }
 
         public string Description { get; set; }

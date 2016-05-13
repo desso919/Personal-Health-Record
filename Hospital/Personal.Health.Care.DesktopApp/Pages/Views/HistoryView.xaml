@@ -30,11 +30,9 @@
                         <Image Grid.Column="0" HorizontalAlignment="Left" Grid.RowSpan="2" Source="../../Images/Icons/history.png" Height="32"/>
                         
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="Reason: " />
                             <TextBlock Text="{Binding Reason}" FontWeight="Bold" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="Plan Date : " />
                             <TextBlock Text="{Binding Date}" Foreground="Blue" />
                         </StackPanel>
                     </Grid>

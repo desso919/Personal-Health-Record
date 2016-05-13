@@ -19,6 +19,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -30,8 +31,12 @@
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new template" Style="{StaticResource Heading2}" />
 
-        <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Visitation.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <Label Grid.Row="1" Grid.Column="0" Content="Template Name:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Template.Title, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+
+        
+        <Label Grid.Row="2" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Template.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowHospital}" />
@@ -39,23 +44,22 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="2" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Visitation.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <Label Grid.Row="3" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox  Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Template.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowDoctor}" />
-
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="3" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Visitation.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Template.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
-        <Label Grid.Row="4" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Visitation.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Template.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
 
-        <Button Grid.Row="5" Grid.Column="1" Content="Add Template" Command="{Binding AddTemplateCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120"/>
+        <Button Grid.Row="6" Grid.Column="1" Content="Add Template" Command="{Binding AddTemplateCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>

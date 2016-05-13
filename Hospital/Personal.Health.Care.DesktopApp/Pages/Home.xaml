@@ -37,15 +37,15 @@
             <Image Source="../../Images/Icons/history2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>           
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Template" ToolTip="Quickly add a new template" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/TemplateOptions/AddTemplateOption.xaml"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Template" ToolTip="Quickly add a new template" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/TemplateOptions/AddTemplateOption.xaml"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Background="{Binding}" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/template.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Profile" ToolTip="View Profile" Command="NavigationCommands.GoToPage" CommandParameter="/Pages/Settings/PatientProfileView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Profile" ToolTip="View Profile" Command="NavigationCommands.GoToPage" CommandParameter="/Pages/Settings/PatientProfileView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Background="{Binding SelectedTheme}" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/profile.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Help" Command="NavigationCommands.GoToPage" ToolTip="Show Help" CommandParameter="/Pages/Settings/HelpView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Help" Command="NavigationCommands.GoToPage" ToolTip="Show Help" CommandParameter="/Pages/Settings/HelpView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Background="{Binding SelectedAccentColor}" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/help.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 

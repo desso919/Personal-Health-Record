@@ -20,18 +20,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
     public class RegistrationViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private RegistrationFormModel registrationFormModel;
         private ICommand addPatientCommand;
         private IPatientService service;
         private SecureString password;
         private Patient patient;
-        private string usernameMessage;
-        private string firstNameMessage;
-        private string secondNameMessage;
-        private string lastNameMessage;
-        private string egnMessage;
-        private string birthDateMessage;
-        private RegistrationFormModel registrationFormModel;
-
+        
         public RegistrationViewModel()
         {
             patient = new Patient();          

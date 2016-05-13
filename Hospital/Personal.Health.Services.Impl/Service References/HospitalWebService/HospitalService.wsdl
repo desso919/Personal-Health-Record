@@ -102,6 +102,12 @@
   <wsdl:message name="IHospitalService_GetVisitationByPatientID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetVisitationByPatientIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IHospitalService_MakeVisitationHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeVisitationHistory" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_MakeVisitationHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeVisitationHistoryResponse" />
+  </wsdl:message>
   <wsdl:message name="IHospitalService_AddNewVisitation_InputMessage">
     <wsdl:part name="parameters" element="tns:AddNewVisitation" />
   </wsdl:message>
@@ -119,6 +125,36 @@
   </wsdl:message>
   <wsdl:message name="IHospitalService_RatingDoctor_OutputMessage">
     <wsdl:part name="parameters" element="tns:RatingDoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetAllPatientTemplates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPatientTemplates" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetAllPatientTemplates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPatientTemplatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_AddTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_AddTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetRecommendedVisitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedVisitation" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetRecommendedVisitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedVisitationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetRecommendedVisitationForPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedVisitationForPatient" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_GetRecommendedVisitationForPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecommendedVisitationForPatientResponse" />
   </wsdl:message>
   <wsdl:portType name="IHospitalService">
     <wsdl:operation name="GetPatient">
@@ -185,6 +221,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetVisitationByPatientID" message="tns:IHospitalService_GetVisitationByPatientID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/GetVisitationByPatientIDResponse" message="tns:IHospitalService_GetVisitationByPatientID_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="MakeVisitationHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/MakeVisitationHistory" message="tns:IHospitalService_MakeVisitationHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/MakeVisitationHistoryResponse" message="tns:IHospitalService_MakeVisitationHistory_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="AddNewVisitation">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/AddNewVisitation" message="tns:IHospitalService_AddNewVisitation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/AddNewVisitationResponse" message="tns:IHospitalService_AddNewVisitation_OutputMessage" />
@@ -196,6 +236,26 @@
     <wsdl:operation name="RatingDoctor">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/RatingDoctor" message="tns:IHospitalService_RatingDoctor_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/RatingDoctorResponse" message="tns:IHospitalService_RatingDoctor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetTemplate" message="tns:IHospitalService_GetTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/GetTemplateResponse" message="tns:IHospitalService_GetTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPatientTemplates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetAllPatientTemplates" message="tns:IHospitalService_GetAllPatientTemplates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/GetAllPatientTemplatesResponse" message="tns:IHospitalService_GetAllPatientTemplates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/AddTemplate" message="tns:IHospitalService_AddTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/AddTemplateResponse" message="tns:IHospitalService_AddTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedVisitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetRecommendedVisitation" message="tns:IHospitalService_GetRecommendedVisitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/GetRecommendedVisitationResponse" message="tns:IHospitalService_GetRecommendedVisitation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedVisitationForPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetRecommendedVisitationForPatient" message="tns:IHospitalService_GetRecommendedVisitationForPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/GetRecommendedVisitationForPatientResponse" message="tns:IHospitalService_GetRecommendedVisitationForPatient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IHospitalService" type="tns:IHospitalService">
@@ -344,6 +404,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="MakeVisitationHistory">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/MakeVisitationHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="AddNewVisitation">
       <soap:operation soapAction="http://tempuri.org/IHospitalService/AddNewVisitation" style="document" />
       <wsdl:input>
@@ -364,6 +433,51 @@
     </wsdl:operation>
     <wsdl:operation name="RatingDoctor">
       <soap:operation soapAction="http://tempuri.org/IHospitalService/RatingDoctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplate">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/GetTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPatientTemplates">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/GetAllPatientTemplates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTemplate">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/AddTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedVisitation">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/GetRecommendedVisitation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecommendedVisitationForPatient">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/GetRecommendedVisitationForPatient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -48,6 +48,8 @@
     <Compile Include="ServiceInterfaces\IHistoryService.cs" />
     <Compile Include="ServiceInterfaces\IHospitalService.cs" />
     <Compile Include="ServiceInterfaces\IPatientService.cs" />
+    <Compile Include="ServiceInterfaces\IRecommendedVisitationService.cs" />
+    <Compile Include="ServiceInterfaces\ITemplateService.cs" />
     <Compile Include="ServiceInterfaces\IVisitationService.cs" />
   </ItemGroup>
   <ItemGroup>

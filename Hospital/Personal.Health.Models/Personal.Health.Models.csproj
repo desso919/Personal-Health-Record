@@ -45,6 +45,7 @@
     <Compile Include="HospitalModel.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecommendedVisitation.cs" />
     <Compile Include="RegistrationFormModel.cs" />
     <Compile Include="ScheduledVisitation.cs" />
     <Compile Include="Template.cs" />

@@ -1,6 +1,8 @@
 ﻿using Ninject;
 using Personal.Health.Services;
 using Personal.Health.Services.Impl;
+using Personal.Health.Services.Impl.ServiceImpl;
+using Personal.Health.Services.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,8 @@ namespace NInjectConfigProject
             Container.Bind<IDoctorService>().To<DoctorService>().InTransientScope();
             Container.Bind<IHistoryService>().To<HistoryService>().InTransientScope();
             Container.Bind<IVisitationService>().To<VisitationService>().InTransientScope();
+            Container.Bind<ITemplateService>().To<TemplateServcie>().InTransientScope();
+            Container.Bind<IRecommendedVisitationService>().To<RecommendedVisitationService>().InTransientScope();
         }
     }
 }

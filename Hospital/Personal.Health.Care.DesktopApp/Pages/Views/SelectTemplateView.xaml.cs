@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using Personal.Health.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,18 @@ using System.Windows.Shapes;
 namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for ChooseTemplateView.xaml
+    /// Interaction logic for SelectTemplateView.xaml
     /// </summary>
-    public partial class ChooseTemplateView : ModernDialog
+    public partial class SelectTemplateView : ModernWindow
     {
-        public ChooseTemplateView()
+        public SelectTemplateView()
         {
             InitializeComponent();
+        }
 
-            // define the dialog buttons
-            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
