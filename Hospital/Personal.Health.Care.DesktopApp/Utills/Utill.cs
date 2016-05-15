@@ -17,5 +17,11 @@ namespace Personal.Health.Care.DesktopApp.Utills
 
             return age;
         }
+
+        public static string formatDate(string date)
+        {
+            if (date == null) return null;
+            return String.Format("{0:f}", date);
+        }
     }
 }

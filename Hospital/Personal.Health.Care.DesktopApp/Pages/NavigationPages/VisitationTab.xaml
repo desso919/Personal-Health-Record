@@ -12,7 +12,7 @@
             <mui:ModernTab.Links>
                 <!-- TODO: set @Source -->
                 <mui:Link DisplayName="Scheduled visitations" Source="Pages/Options/VisitationOptions/ScheduledVisitationsPage.xaml"/>
-                <mui:Link DisplayName="Scheduling new visitation"  Source="Pages/Options/VisitationOptions/AddVisitationOption.xaml"/>
+                <mui:Link DisplayName="Schedule new visitation"  Source="Pages/Options/VisitationOptions/AddVisitationOption.xaml"/>
             </mui:ModernTab.Links>
         </mui:ModernTab>
     </Grid>

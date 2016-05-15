@@ -49,5 +49,16 @@ namespace Personal.Health.Services.Impl
             }
             return false;
         }
+
+
+        public bool EditVisitation(ScheduledVisitation visitatin)
+        {
+            bool isSuccessfullyEdited = WebService.getInstance().EditVisitation(visitatin.Id, visitatin.Hospital.HospitalId, visitatin.Doctor.DoctorId, visitatin.Date, visitatin.Reason, visitatin.Description);
+            if (isSuccessfullyEdited)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

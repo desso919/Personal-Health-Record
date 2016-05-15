@@ -31,7 +31,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             history = new History();
             service = NinjectConfig.Container.Get<IHistoryService>();
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
+            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             addHistoryCommand = new RelayCommand(AddHistoryRecord);
         }
 
@@ -86,7 +86,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (isAdded)
             {
-                new HistoryViewModel();
+                HistoryViewModel.GetInstance().ShowPatientHistory();
                 MessageBox.Show(" History Added Successfully! ");
             }
             else

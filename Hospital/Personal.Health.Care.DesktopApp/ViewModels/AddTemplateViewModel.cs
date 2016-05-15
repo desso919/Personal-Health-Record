@@ -14,6 +14,7 @@ using Ninject;
 using Personal.Health.Care.DesktopApp.Utills;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using Personal.Health.Care.DesktopApp.Model;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -31,7 +32,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             template = new Template();
             service = NinjectConfig.Container.Get<ITemplateService>();
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
+            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             addTemplateCommand = new RelayCommand(AddTempalate);
         }
 
@@ -86,12 +87,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (isAdded)
             {
-                new TemplatesViewModel();
-                Messenger.ShowMessage("Add template Successfully!");
+                //MediatorClass.GetInstance().Templates.Add(Template);
+                MessageBox.Show("Add template Successfully!");
             }
             else
             {
-               Messenger.ShowMessage("Error", " Error while trying to add template.");
+                MessageBox.Show("Error", " Error while trying to add template.");
             }
 
             Template = new Template();

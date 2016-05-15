@@ -8,22 +8,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <UserControl.DataContext>
-        <local:SheduledVisitationsViewModel/>
-    </UserControl.DataContext>
-
     <Grid Style="{StaticResource ContentRoot}">
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Row="0" Grid.Column="0" SelectedItem="{Binding SelectedVisitation}" ItemsSource="{Binding Visitations}" HorizontalAlignment="Left" Width="Auto" >
+        <ListView Grid.Row="0" Grid.Column="0" SelectedItem="{Binding SelectedVisitation}" ItemsSource="{Binding Visitations}" SelectionMode="Single" HorizontalAlignment="Left" Width="500" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -36,19 +32,24 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0" HorizontalAlignment="Left" Grid.RowSpan="2" Source="../../Images/Icons/scheduled.png" Height="32"/>                    
+                        <Image Grid.Column="0" HorizontalAlignment="Left" Grid.RowSpan="2" Source="../../Images/Icons/scheduled.png" Height="32"/>
 
                         <StackPanel HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                             <TextBlock HorizontalAlignment="Left" Text="{Binding Reason}" FontWeight="Bold" />
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Date}" Foreground="Blue" />                            
+                            <TextBlock Text="{Binding Path=Date}" Foreground="Blue" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-       <Button Grid.Row="1" Grid.Column="0" Content="Move To History" Command="{Binding MoveToHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150"/>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <Button Content="Edit Visitation" Command="{Binding EditVisitationCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150"/>
+            <Button Content="Move To History" Command="{Binding MoveToHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Margin="120,0,0,0"/>
+        </StackPanel>
+
     </Grid>
 </UserControl>

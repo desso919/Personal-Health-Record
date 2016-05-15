@@ -38,5 +38,16 @@ namespace Personal.Health.Services.Impl.ServiceImpl
             }
             return false;
         }
+
+
+        public bool EditTemplate(Template template)
+        {
+            bool isSuccessfullyEdited = WebService.getInstance().EditTemplate(template.Id, template.Hospital.HospitalId, template.Doctor.DoctorId, template.Title, template.Reason, template.Description);
+            if (isSuccessfullyEdited)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

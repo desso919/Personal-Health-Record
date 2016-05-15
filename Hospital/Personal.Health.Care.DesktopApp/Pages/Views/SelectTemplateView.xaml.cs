@@ -1,4 +1,5 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using Personal.Health.Care.DesktopApp.ViewModels;
 using Personal.Health.Models;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Personal.Health.Care.DesktopApp.Pages.Views
         public SelectTemplateView()
         {
             InitializeComponent();
+            this.DataContext = TemplatesViewModel.GetInstance();
         }
 
         private void Close(object sender, RoutedEventArgs e)

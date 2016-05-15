@@ -92,7 +92,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             if (isValidPatient())
             {
                 Patient.Password = SecurityUtil.HashPassword(Password);
-                Patient.Age = Utill.GetAge(Patient.BirhtDate);
+                Patient.Age = Utills.Utill.GetAge(Patient.BirhtDate);
                 isAdded = service.RegisterUser(Patient);
 
                 if (isAdded)

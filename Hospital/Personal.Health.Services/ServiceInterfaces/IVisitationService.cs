@@ -16,5 +16,7 @@ namespace Personal.Health.Services
         Boolean MakeVisitationHistory(long id, string diagnose);
 
         Boolean AddNewScheduleVisitation(ScheduledVisitation visitatin);
+
+        Boolean EditVisitation(ScheduledVisitation visitatin);
     }
 }

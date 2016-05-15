@@ -114,6 +114,12 @@
   <wsdl:message name="IHospitalService_AddNewVisitation_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddNewVisitationResponse" />
   </wsdl:message>
+  <wsdl:message name="IHospitalService_EditVisitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditVisitation" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_EditVisitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditVisitationResponse" />
+  </wsdl:message>
   <wsdl:message name="IHospitalService_RatingHospital_InputMessage">
     <wsdl:part name="parameters" element="tns:RatingHospital" />
   </wsdl:message>
@@ -143,6 +149,12 @@
   </wsdl:message>
   <wsdl:message name="IHospitalService_AddTemplate_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_EditTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IHospitalService_EditTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditTemplateResponse" />
   </wsdl:message>
   <wsdl:message name="IHospitalService_GetRecommendedVisitation_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRecommendedVisitation" />
@@ -229,6 +241,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/AddNewVisitation" message="tns:IHospitalService_AddNewVisitation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/AddNewVisitationResponse" message="tns:IHospitalService_AddNewVisitation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EditVisitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/EditVisitation" message="tns:IHospitalService_EditVisitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/EditVisitationResponse" message="tns:IHospitalService_EditVisitation_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RatingHospital">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/RatingHospital" message="tns:IHospitalService_RatingHospital_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/RatingHospitalResponse" message="tns:IHospitalService_RatingHospital_OutputMessage" />
@@ -248,6 +264,10 @@
     <wsdl:operation name="AddTemplate">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/AddTemplate" message="tns:IHospitalService_AddTemplate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/AddTemplateResponse" message="tns:IHospitalService_AddTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/EditTemplate" message="tns:IHospitalService_EditTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHospitalService/EditTemplateResponse" message="tns:IHospitalService_EditTemplate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetRecommendedVisitation">
       <wsdl:input wsaw:Action="http://tempuri.org/IHospitalService/GetRecommendedVisitation" message="tns:IHospitalService_GetRecommendedVisitation_InputMessage" />
@@ -422,6 +442,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EditVisitation">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/EditVisitation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RatingHospital">
       <soap:operation soapAction="http://tempuri.org/IHospitalService/RatingHospital" style="document" />
       <wsdl:input>
@@ -460,6 +489,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddTemplate">
       <soap:operation soapAction="http://tempuri.org/IHospitalService/AddTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditTemplate">
+      <soap:operation soapAction="http://tempuri.org/IHospitalService/EditTemplate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

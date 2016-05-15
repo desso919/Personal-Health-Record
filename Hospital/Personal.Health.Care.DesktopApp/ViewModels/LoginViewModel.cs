@@ -14,6 +14,7 @@ using System.Runtime.CompilerServices;
 using Hospital.Models;
 using System.Text.RegularExpressions;
 using System.Windows;
+using Personal.Health.Care.DesktopApp.Model;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -106,19 +107,20 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                 if (loginWindow != null)
                 {
                     LoggedInPatient.Init(patient);
+                    MediatorClass.Init();
                     MainWindow mainWindow = new MainWindow();
                     mainWindow.Show();
                     loginWindow.Close();                                
                 }
                 else 
                 {
-                    MessageBox.Show(" Something went wrong! ");
+                    Messenger.ShowMessage(" Something went wrong! ");
 
                 }                       
             }
             else
             {
-                throw new Exception(" Wrong Username or password. Please try again!");
+                Messenger.ShowMessage(" Wrong Username or password. Please try again!");
             }
         }
 

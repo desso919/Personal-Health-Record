@@ -4,6 +4,8 @@
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                   xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+                  xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
                   xmlns:Pages="clr-namespace:Personal.Health.Care.DesktopApp.Pages" 
                   x:Class="Personal.Health.Care.DesktopApp.Pages.UserManagement.RegistrationView"
                   xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
@@ -74,9 +76,9 @@
 
 
         <Label Grid.Row="7" Grid.Column="0" Content="*Birth Date:" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120"/>
-        <DatePicker Grid.Row="7" Grid.Column="1" Text="{Binding Patient.BirhtDate,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Label Grid.Row="7" Grid.Column="1" Content="{Binding RegistrationFormModel.BirthDateMessage}" FontSize="10" Foreground="Red" HorizontalAlignment="left" VerticalAlignment="Bottom" Width="300"/>
-
+        <xctk:DateTimePicker DisplayDefaultValueOnEmptyText="True"  Grid.Row="7" Grid.Column="1" Text="{Binding Patient.BirhtDate,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+        <Label Grid.Row="7" Grid.Column="1" Content="{Binding RegistrationFormModel.BirthDateMessage}" FontSize="10" Foreground="Red" HorizontalAlignment="left" VerticalAlignment="Bottom" Width="300"/>   
+        
         <Label Grid.Row="8" Grid.Column="0" Content="*Gender:" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
 
         <StackPanel Grid.Row="8" Grid.Column="1" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center" >

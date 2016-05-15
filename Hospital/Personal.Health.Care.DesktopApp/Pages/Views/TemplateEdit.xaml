@@ -1,0 +1,54 @@
+﻿<mui:ModernDialog x:Class="Personal.Health.Care.DesktopApp.Pages.Views.TemplateEdit"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+                  mc:Ignorable="d" 
+                  d:DesignHeight="300" d:DesignWidth="300"
+                  Title="Template">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Title" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Title}" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="300"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Hospital" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <ComboBox Name="hospitalsComboBox" Grid.Row="2" Grid.Column="1" Margin="0,10,0,10" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Template.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=ShowHospital}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Grid.Row="1" Grid.Column="0"  Content="Doctor" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique"   VerticalAlignment="Center" Width="120"/>
+        <ComboBox  Grid.Row="1" Grid.Column="1" Margin="0,10,0,10" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Template.Doctor}"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=ShowDoctor}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Reason" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
+
+        <Label Grid.Row="4" Grid.Column="0"  Content="Description" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique" VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Description, Mode=TwoWay}" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="60" Width="300"/>
+
+    </Grid>
+</mui:ModernDialog>

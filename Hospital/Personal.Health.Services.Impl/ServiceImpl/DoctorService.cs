@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Personal.Health.Services.Impl.ServiceImpl;
+using System.Threading.Tasks;
 
 
 namespace Personal.Health.Services.Impl
 {
     public class DoctorService : IDoctorService 
     {
-        public List<Doctor> GetAllDoctors()
+        public async Task<List<Doctor>> GetAllDoctors()
         {
-           return JsonConvert.DeserializeObject<List<Doctor>>(WebService.getInstance().GetAllDoctors());
+           string result = await WebService.getInstance().GetAllDoctorsAsync();
+           return JsonConvert.DeserializeObject<List<Doctor>>(result);
         }
 
         public Doctor getDoctor(long id)

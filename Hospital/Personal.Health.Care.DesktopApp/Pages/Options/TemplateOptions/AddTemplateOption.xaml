@@ -7,11 +7,6 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
-
-    <UserControl.DataContext>
-        <local:AddTemplateViewModel/>
-    </UserControl.DataContext>
     
     <Grid Style="{StaticResource ContentRoot}">
         <Grid.RowDefinitions>

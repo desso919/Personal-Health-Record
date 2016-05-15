@@ -7,14 +7,10 @@
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
-    <UserControl.DataContext>
-        <local:HistoryViewModel/>
-    </UserControl.DataContext>
         
     <Grid Style="{StaticResource ContentRoot}">
 
-        <ListView ItemsSource="{Binding Histories}" HorizontalAlignment="Left" Width="Auto" >
+        <ListView ItemsSource="{Binding Histories}" SelectionMode="Single" HorizontalAlignment="Left"  Width="500" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>

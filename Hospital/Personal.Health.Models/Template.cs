@@ -28,5 +28,21 @@ namespace Personal.Health.Models
         public string Reason { get; set; }
 
         public string Description { get; set; }
+
+        public Template Clone()
+        {
+            Template cloneObject = new Template();
+            cloneObject.Id = Id;
+            cloneObject.Title = Title;
+            cloneObject.PatientId = PatientId;
+            cloneObject.HospitalId = HospitalId;
+            cloneObject.DoctorId = DoctorId;
+            cloneObject.Patient = Patient;
+            cloneObject.Hospital = Hospital;
+            cloneObject.Doctor = Doctor;
+            cloneObject.Reason = Reason;
+            cloneObject.Description = Description;
+            return cloneObject;
+        }
     }
 }

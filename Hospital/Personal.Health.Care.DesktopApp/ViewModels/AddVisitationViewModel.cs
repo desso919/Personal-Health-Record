@@ -33,7 +33,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             visitation = new ScheduledVisitation();
             service = NinjectConfig.Container.Get<IVisitationService>();
             Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
+            Task<List<Doctor>> task = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
             addVisitationCommand = new RelayCommand(AddVisitation);
             loadTemplateCommand = new RelayCommand(LoadTemplateMethod);
         }
@@ -61,7 +61,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             get { return MediatorClass.SelectedVisitation.Date; }
             set { MediatorClass.SelectedVisitation.Date = value; NotifyPropertyChanged(); }
         }
-
 
         public List<HospitalModel> Hospitals
         {
@@ -108,7 +107,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (isAdded)
             {
-                new SheduledVisitationsViewModel();
+                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations();
                 MessageBox.Show(" Scheduled visitation Successfully! ");
             }
             else

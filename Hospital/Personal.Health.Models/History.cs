@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personal.Health.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace Hospital.Models
 {
     public class History
     {
+        private DateTime date;
+
         public Patient Patient { get; set; }
 
         public HospitalModel Hospital{ get; set; }
@@ -20,6 +23,10 @@ namespace Hospital.Models
 
         public string Description { get; set; }
 
-        public string Date { get; set; }
+        public string Date 
+        {
+            get { return Utill.formatDate(date); }
+            set { date = Convert.ToDateTime(value); }
+        }
     }
 }

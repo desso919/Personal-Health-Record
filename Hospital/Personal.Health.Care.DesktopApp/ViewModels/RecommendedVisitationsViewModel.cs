@@ -65,7 +65,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public void ShowPatientRecommendedVisitation()
         {
-            RecommendedVisiations = service.GetRecommendedVisitationForPatient(Utill.GetAge(LoggedInPatient.GetPatient().BirhtDate));
+            RecommendedVisiations = service.GetRecommendedVisitationForPatient(Utills.Utill.GetAge(LoggedInPatient.GetPatient().BirhtDate));
         }
 
         public void AddToMyVisitations(Object obj) {
@@ -85,7 +85,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (isAdded)
             {
-                new SheduledVisitationsViewModel();
+                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations();
                 MessageBox.Show("Added Seccessfuly");
             }
             else

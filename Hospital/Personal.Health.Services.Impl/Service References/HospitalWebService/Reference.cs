@@ -123,6 +123,12 @@ namespace Personal.Health.Services.Impl.HospitalWebService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/AddNewVisitation", ReplyAction="http://tempuri.org/IHospitalService/AddNewVisitationResponse")]
         System.Threading.Tasks.Task<bool> AddNewVisitationAsync(long patient_id, long hospital_id, long doctor_id, string date, string reason, string description);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/EditVisitation", ReplyAction="http://tempuri.org/IHospitalService/EditVisitationResponse")]
+        bool EditVisitation(long id, long hospital_id, long doctor_id, string date, string reason, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/EditVisitation", ReplyAction="http://tempuri.org/IHospitalService/EditVisitationResponse")]
+        System.Threading.Tasks.Task<bool> EditVisitationAsync(long id, long hospital_id, long doctor_id, string date, string reason, string description);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/RatingHospital", ReplyAction="http://tempuri.org/IHospitalService/RatingHospitalResponse")]
         bool RatingHospital(long patient_id, long hospital_id, int rating);
         
@@ -152,6 +158,12 @@ namespace Personal.Health.Services.Impl.HospitalWebService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/AddTemplate", ReplyAction="http://tempuri.org/IHospitalService/AddTemplateResponse")]
         System.Threading.Tasks.Task<bool> AddTemplateAsync(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/EditTemplate", ReplyAction="http://tempuri.org/IHospitalService/EditTemplateResponse")]
+        bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/EditTemplate", ReplyAction="http://tempuri.org/IHospitalService/EditTemplateResponse")]
+        System.Threading.Tasks.Task<bool> EditTemplateAsync(long id, long hospital_id, long doctor_id, string title, string reason, string description);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHospitalService/GetRecommendedVisitation", ReplyAction="http://tempuri.org/IHospitalService/GetRecommendedVisitationResponse")]
         string GetRecommendedVisitation(long id);
@@ -337,6 +349,14 @@ namespace Personal.Health.Services.Impl.HospitalWebService {
             return base.Channel.AddNewVisitationAsync(patient_id, hospital_id, doctor_id, date, reason, description);
         }
         
+        public bool EditVisitation(long id, long hospital_id, long doctor_id, string date, string reason, string description) {
+            return base.Channel.EditVisitation(id, hospital_id, doctor_id, date, reason, description);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EditVisitationAsync(long id, long hospital_id, long doctor_id, string date, string reason, string description) {
+            return base.Channel.EditVisitationAsync(id, hospital_id, doctor_id, date, reason, description);
+        }
+        
         public bool RatingHospital(long patient_id, long hospital_id, int rating) {
             return base.Channel.RatingHospital(patient_id, hospital_id, rating);
         }
@@ -375,6 +395,14 @@ namespace Personal.Health.Services.Impl.HospitalWebService {
         
         public System.Threading.Tasks.Task<bool> AddTemplateAsync(long patient_id, long hospital_id, long doctor_id, string title, string reason, string description) {
             return base.Channel.AddTemplateAsync(patient_id, hospital_id, doctor_id, title, reason, description);
+        }
+        
+        public bool EditTemplate(long id, long hospital_id, long doctor_id, string title, string reason, string description) {
+            return base.Channel.EditTemplate(id, hospital_id, doctor_id, title, reason, description);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EditTemplateAsync(long id, long hospital_id, long doctor_id, string title, string reason, string description) {
+            return base.Channel.EditTemplateAsync(id, hospital_id, doctor_id, title, reason, description);
         }
         
         public string GetRecommendedVisitation(long id) {

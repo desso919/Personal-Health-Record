@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Personal.Health.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Hospital.Models
     {
         private const string MALE = "Male";
         private const string FEMALE = "Female";
+        private DateTime date;
         private bool isMale;
 
 
@@ -47,7 +49,11 @@ namespace Hospital.Models
 
         public int Age { get; set; }
 
-        public string BirhtDate { get; set; }
+        public string BirhtDate
+        {
+            get { return Utill.formatDate(date); }
+            set { date = Convert.ToDateTime(value); }
+        }
 
         public string FullName
         {

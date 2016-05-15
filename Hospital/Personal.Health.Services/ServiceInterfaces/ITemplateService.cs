@@ -14,5 +14,7 @@ namespace Personal.Health.Services.ServiceInterfaces
         List<Template> GetAllPatientTemplates(long patient_id);
 
         bool AddTemplate(Template template);
+
+        bool EditTemplate(Template template);
     }
 }
