@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Personal.Health.Services.Impl.ServiceImpl;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Personal.Health.Services.Impl
 {
@@ -10,7 +11,8 @@ namespace Personal.Health.Services.Impl
     {
         public List<HospitalModel> GetAllHispitals()
         {
-            return JsonConvert.DeserializeObject<List<HospitalModel>>(WebService.getInstance().GetAllHospitals());
+            string result = WebService.getInstance().GetAllHospitals();
+            return JsonConvert.DeserializeObject<List<HospitalModel>>(result);
         }
 
         public HospitalModel GetHispital(long id)

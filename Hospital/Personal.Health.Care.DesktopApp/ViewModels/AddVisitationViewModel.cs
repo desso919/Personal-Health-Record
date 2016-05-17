@@ -24,16 +24,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         private ICommand addVisitationCommand;
         private ICommand loadTemplateCommand;
         private IVisitationService service;
-        private List<HospitalModel> hospitals;
-        private List<Doctor> doctors;
         private ScheduledVisitation visitation;
 
         public AddVisitationViewModel()
         {
             visitation = new ScheduledVisitation();
             service = NinjectConfig.Container.Get<IVisitationService>();
-            Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Task<List<Doctor>> task = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
             addVisitationCommand = new RelayCommand(AddVisitation);
             loadTemplateCommand = new RelayCommand(LoadTemplateMethod);
         }
@@ -64,16 +60,14 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public ICommand LoadTemplateCommand { get { return loadTemplateCommand; } set { loadTemplateCommand = value; NotifyPropertyChanged(); } }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand AddVisitationCommand
@@ -101,21 +95,29 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public void AddVisitation(Object obj)
         {
-
-            Visitation.Patient = LoggedInPatient.GetPatient();
-            Boolean isAdded = service.AddNewScheduleVisitation(Visitation);
-
-            if (isAdded)
+            if (Utills.Utill.isValidVisitation(Visitation))
             {
-                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations();
-                MessageBox.Show(" Scheduled visitation Successfully! ");
-            }
-            else
-            {
-                MessageBox.Show(" Error while trying to add Scheduled visitation! ");
-            }
+                Visitation.Patient = LoggedInPatient.GetPatient();
+                Boolean isAdded = service.AddNewScheduleVisitation(Visitation);
+                string message;
 
-            Visitation = new ScheduledVisitation();
+                if (isAdded)
+                {
+                    MediatorClass.UpdatePatientVisitations();
+                    SheduledVisitationsViewModel.GetInstance().update();
+                    message = "Add Visitation Successfully";
+                    Visitation = new ScheduledVisitation();
+                }
+                else
+                {
+                    message = "Error while trying to add visitation";
+                }
+
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                {
+                    Messenger.ShowMessage("Result", message);
+                }));
+            }
         }
 
         public void LoadTemplateMethod(Object obj)

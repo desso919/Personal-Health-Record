@@ -18,18 +18,34 @@ namespace Personal.Health.Services.Impl
 
         public Patient LoginWithUsername(string username, string password)
         {
-            string result = WebService.getInstance().GetPatientByUsernameAndPassword(username, password);
-            if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
+            try
+            {
+                string result = WebService.getInstance().GetPatientByUsernameAndPassword(username, password);
+                if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
 
-            return JsonConvert.DeserializeObject<Patient>(result);
+                return JsonConvert.DeserializeObject<Patient>(result);
+            }
+            catch (Exception)
+            {
+                
+                throw new Exception("Could not connect to the server");
+            }          
         }
 
         public Patient LoginWithEGN(string egn, string password)
         {
-            string result = WebService.getInstance().GetPatientByEGNAndPassword(egn, password);
-            if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
+            try
+            {
+                string result = WebService.getInstance().GetPatientByEGNAndPassword(egn, password);
+                if (result.Equals(ServicesUtils.EMPTY_JSON)) { return null; }
 
-            return JsonConvert.DeserializeObject<Patient>(result);
+                return JsonConvert.DeserializeObject<Patient>(result);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Could not connect to the server");
+            }   
         }
 
         public Boolean RegisterUser(Patient patient)

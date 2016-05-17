@@ -5,9 +5,12 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                   xmlns:mui="http://firstfloorsoftware.com/ModernUI"
                   mc:Ignorable="d" 
+                  Height="200"
+                  Width="400"
+                  ResizeMode="NoResize"
                   d:DesignHeight="300" d:DesignWidth="300"
                   Title="ModernDialog">
-    
-    <TextBlock Name="textMessage" TextWrapping="Wrap"/>
+
+    <TextBlock Name="textMessage" TextWrapping="Wrap" Style="{StaticResource Heading2}"/>
     
 </mui:ModernDialog>

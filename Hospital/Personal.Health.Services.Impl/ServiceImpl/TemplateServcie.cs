@@ -31,11 +31,14 @@ namespace Personal.Health.Services.Impl.ServiceImpl
 
         public bool AddTemplate(Template template)
         {
-            bool isAdded = WebService.getInstance().AddTemplate(template.Patient.Id, template.Hospital.HospitalId, template.Doctor.DoctorId, template.Title, template.Reason, template.Description);
-            if (isAdded)
+            if (template.Doctor != null && template.Hospital != null)
             {
-                return true;
-            }
+                bool isAdded = WebService.getInstance().AddTemplate(template.Patient.Id, template.Hospital.HospitalId, template.Doctor.DoctorId, template.Title, template.Reason, template.Description);
+                if (isAdded)
+                {
+                    return true;
+                }
+            }    
             return false;
         }
 

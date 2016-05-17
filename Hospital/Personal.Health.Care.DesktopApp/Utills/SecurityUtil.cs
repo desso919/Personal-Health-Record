@@ -50,20 +50,42 @@ namespace Personal.Health.Care.DesktopApp.Utills
             }
         }
 
-        public static bool isEGN(string loginCredential)
+        public static bool isEGN(string egn)
         {
-            string regExPattern = @"^[0-9]+$";
-            Regex pattern = new Regex(regExPattern);
-            return pattern.IsMatch(loginCredential);
+            if (egn != null)
+            {
+                string regExPattern = @"^[0-9]+$";
+                Regex pattern = new Regex(regExPattern);
+                return pattern.IsMatch(egn);
+            }
+            return false;
         }
 
         public static bool isValidString(string value)
         {
-            if (value != null && value.Length < MAX_LENTH)
+            if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value) && value.Length < MAX_LENTH)
             {
                 return true;
             }
             return false;
+        }
+
+        public static string getProperMessage(string value, string field)
+        {
+            if (value == null || value.Length > MAX_LENTH)
+            {
+                return "Please insert a valid value for " + field;
+            }
+            return String.Empty;
+        }
+
+        public static string getErrorMessage(string field)
+        {
+            if (field != null)
+            {
+                return "Please insert a valid value for " + field;
+            }
+            return String.Empty;
         }
 
         public static bool isValidDate(string date)

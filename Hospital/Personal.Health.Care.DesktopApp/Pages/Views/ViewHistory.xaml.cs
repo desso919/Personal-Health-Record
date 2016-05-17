@@ -1,7 +1,6 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
-using Personal.Health.Care.DesktopApp.Model;
+using Hospital.Models;
 using Personal.Health.Care.DesktopApp.ViewModels;
-using Personal.Health.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,27 +19,25 @@ using System.Windows.Shapes;
 namespace Personal.Health.Care.DesktopApp.Pages.Views
 {
     /// <summary>
-    /// Interaction logic for MoveToVisitationView.xaml
+    /// Interaction logic for ViewHistory.xaml
     /// </summary>
-    public partial class MoveToVisitationView : ModernDialog
+    public partial class ViewHistory : ModernDialog
     {
-        public MoveToVisitationView()
+        public ViewHistory()
         {
             InitializeComponent();
 
             // define the dialog buttons
-            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
+            this.Buttons = new Button[] { this.OkButton };
         }
 
-        public MoveToVisitationView(RecommendedVisitation recommendedVisitation)
+        public ViewHistory(History history)
         {
             InitializeComponent();
 
             // define the dialog buttons
-            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
-            this.DataContext = new MoveToVisitationViewModel(recommendedVisitation);
-            this.OkButton.Command = MediatorClass.MoveToVisitationCommand;
-
+            this.Buttons = new Button[] { this.OkButton };
+            this.DataContext = new ViewHistoryViewModel(history);
         }
     }
 }

@@ -23,16 +23,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
          public event PropertyChangedEventHandler PropertyChanged;
         private ICommand addTemplateCommand;
         private ITemplateService service;
-        private List<HospitalModel> hospitals;
-        private List<Doctor> doctors;
         private Template template;
 
         public AddTemplateViewModel()
         {
             template = new Template();
             service = NinjectConfig.Container.Get<ITemplateService>();
-            Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             addTemplateCommand = new RelayCommand(AddTempalate);
         }
 
@@ -46,14 +42,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand AddTemplateCommand
@@ -88,7 +82,10 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             if (isAdded)
             {
                 //MediatorClass.GetInstance().Templates.Add(Template);
-                MessageBox.Show("Add template Successfully!");
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                {
+                    Messenger.ShowMessage("Result", " Template Added Successfully! ");
+                }));
             }
             else
             {

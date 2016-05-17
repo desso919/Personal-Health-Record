@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hospital.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Personal.Health.Models
     public class RecommendedVisitation
     {
         public long Id { get; set; }
+
+        public Patient Patient { get; set; }
 
         public string Title { get; set; }
 

@@ -22,23 +22,28 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Content="Name" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-        <TextBlock Grid.Row="0" Margin="20,0,0,0" Text="{Binding Patient.FullName}" Style="{StaticResource Heading2}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Name" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Patient.FullName}" Style="{StaticResource Heading2}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
-        <Label Grid.Row="1" Content="Username" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-        <TextBlock Grid.Row="1" Margin="20,0,0,0" Text="{Binding Patient.Username}" Style="{StaticResource Heading2}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Label Grid.Row="1" Grid.Column="0" Content="Username" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Patient.Username}" Style="{StaticResource Heading2}" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-        <Label Grid.Row="2" Content="UIN" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique"   VerticalAlignment="Top" Width="120"/>
-        <TextBlock Grid.Row="2" Margin="20,0,0,0" Text="{Binding Patient.EGN}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="UIN" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique"   VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Patient.EGN}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
 
-        <Label Grid.Row="3" Content="Birth date" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique"  VerticalAlignment="Top" Width="120"/>
-        <TextBlock Grid.Row="3" Margin="20,0,0,0" Text="{Binding Patient.BirhtDate}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Birth date" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique"  VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Patient.BirhtDate}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
 
-        <Label Grid.Row="4" Content="Gender" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique" VerticalAlignment="Top" Width="120"/>
-        <TextBlock Grid.Row="4" Margin="20,0,0,0" Text="{Binding Patient.Gender}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="Gender" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique" VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Patient.Gender}" Style="{StaticResource Heading2}" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
        
-        <Button Grid.Row="5" Content="Log out" Command="{Binding LogoutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="90"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="Log out" Command="{Binding LogoutCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="90"/>
         
     </Grid>
 </UserControl>

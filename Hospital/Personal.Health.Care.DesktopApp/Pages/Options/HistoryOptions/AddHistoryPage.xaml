@@ -21,8 +21,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -32,7 +32,7 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new medical history" Style="{StaticResource Heading2}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Add medical record" Style="{StaticResource Heading2}" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <ComboBox Name="hospitalsComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding History.Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
@@ -47,15 +47,14 @@
         <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding History.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                        <TextBlock Text="{Binding Path=ShowDoctor}" />
-    
+                    <TextBlock Text="{Binding Path=ShowDoctor}" />
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
 
         <Label Grid.Row="3" Grid.Column="0" Content="Date:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
-        <xctk:DateTimePicker  Grid.Row="3" Grid.Column="1" Text="{Binding History.Date,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+        <xctk:DateTimePicker  Grid.Row="3" Grid.Column="1" Text="{Binding History.Date,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
         <Label Grid.Row="4" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <TextBox Name="ReasonTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding History.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
@@ -63,8 +62,8 @@
         <Label Grid.Row="5" Grid.Column="0" Content="Diagnose:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <TextBox Name="DiagnoseTextBox" Grid.Row="5" Grid.Column="1" Text="{Binding History.Diagnose, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
-        <Label Grid.Row="6" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="DescTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding History.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="DescTextBox" Grid.Row="6" Grid.Column="1" Text="{Binding History.Description, Mode=TwoWay}" Height="45" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500"/>
 
         <Button Grid.Row="7" Grid.Column="1" Content="Add" Command="{Binding AddHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
       

@@ -87,7 +87,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (LoginCredential == null || Password == null)
             {
-                MessageBox.Show(" Please enter username and password first!");
+                Messenger.ShowMessage(" Please enter username and password first!");
                 return;
             }
 

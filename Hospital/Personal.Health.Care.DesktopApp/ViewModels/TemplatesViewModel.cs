@@ -27,9 +27,8 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         private ICommand addTemplateCommand;
         private ITemplateService service;
         private List<Template> templates;
-        private List<HospitalModel> hospitals;
-        private List<Doctor> doctors;
         private Template template;
+        private Boolean hasSelectedTemplate;
         private static TemplatesViewModel instance;
 
         #region Constructor
@@ -39,9 +38,9 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
              template = new Template();
              service = NinjectConfig.Container.Get<ITemplateService>();
              editTemplateCommand = new RelayCommand(EditTemplate);
-             //Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-             //Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors();
-             addTemplateCommand = new RelayCommand(AddTempalate);         
+             addTemplateCommand = new RelayCommand(AddTempalate);
+             Init();
+             update();
         }
 
         public static TemplatesViewModel GetInstance()
@@ -57,11 +56,14 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #region Properties
 
-        public List<Template> Templates { get { return MediatorClass.Templates; } set { templates = value; NotifyPropertyChanged(); } }
+        public List<Template> Templates { get { return templates; } set { templates = value; NotifyPropertyChanged(); } }
 
         public ICommand EditTemplateCommand { get { return editTemplateCommand; } set { editTemplateCommand = value; NotifyPropertyChanged(); } }
 
-        public Template SelectedTemplate { get { return MediatorClass.SelectedTemplate; } set { MediatorClass.SelectedTemplate = value; NotifyPropertyChanged(); } }
+        public Template SelectedTemplate { get { return MediatorClass.SelectedTemplate; } set { HasSelectedVisitation = true; MediatorClass.SelectedTemplate = value; NotifyPropertyChanged(); } }
+
+        public Boolean HasSelectedVisitation { get { return hasSelectedTemplate; } set { hasSelectedTemplate = value; NotifyPropertyChanged(); } }
+
 
         public Template Template
         {
@@ -71,14 +73,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand AddTemplateCommand
@@ -103,11 +103,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #region show templates Code
 
-        public void ShowAllPatientTemplates()
-        {
-            Templates = new List<Template>(service.GetAllPatientTemplates(LoggedInPatient.GetPatient().Id));
-        }
-
         private void EditTemplate(object obj)
         {
             TemplateEdit edit = new TemplateEdit(SelectedTemplate);
@@ -119,22 +114,45 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         #region Add Template Code
         public void AddTempalate(Object obj)
         {
-            Template.Patient = LoggedInPatient.GetPatient();
-            Boolean isAdded = service.AddTemplate(Template);
-
-            if (isAdded)
+            if (Utills.Utill.isValidTemplate(Template))
             {
-                ShowAllPatientTemplates();
-                MessageBox.Show("Add template Successfully!");
-            }
-            else
-            {
-                MessageBox.Show("Error", " Error while trying to add template.");
-            }
+                Template.Patient = LoggedInPatient.GetPatient();
+                Boolean isAdded = service.AddTemplate(Template);
+                string message = String.Empty;
 
-            Template = new Template();
+                if (isAdded)
+                {
+                    Template.HospitalId = Template.Hospital.HospitalId;
+                    Template.DoctorId = Template.Doctor.DoctorId;
+                    Templates.Add(Template);
+                    message = "Template Added Successfully";
+                }
+                else
+                {
+                    message = " Error while trying to add template";
+                }
+
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                {
+                    Messenger.ShowMessage("Result", message);
+                }));
+
+                Template = new Template();
+            }    
+        }
+
+        public void Init()
+        {
+            MediatorClass.UpdatePatientTemplates();
+        }
+
+        public void update()
+        {
+            Templates = MediatorClass.Templates;
         }
 
         #endregion
+
+       
     }
 }

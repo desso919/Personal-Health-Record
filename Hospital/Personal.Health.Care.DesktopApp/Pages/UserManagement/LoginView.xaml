@@ -10,7 +10,8 @@
                   MinHeight="380"
                   MinWidth="420"
                   mc:Ignorable="d"
-                  Title="Login Window"                 
+                  Title="Personal Health Application" 
+                  ResizeMode="NoResize"
                   Style="{StaticResource BlankWindow}" Height="350" Width="450">
 
 
@@ -20,35 +21,49 @@
 
     <Window.InputBindings>
         <KeyBinding Key="Enter" Command="{ Binding LoginCommand}" />
-    </Window.InputBindings>
+    </Window.InputBindings>       
+    
+    <Window.Background>
+        <ImageBrush ImageSource="../../Images/Pictures/login.jpg"/>
+    </Window.Background>
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.8*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Application Name -->
-        <Label Content="Personal Health Application" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Personal Health Application" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" 
                Width="482" FontStyle="Italic" FontSize="18" FontStretch="Condensed" FontWeight="Bold" Height="38"/>
         <!-- Application details -->
-        <Label Content="Your personal health record application. Log on to continue..." FontStyle="Oblique" 
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Your personal health record application. Log on to continue..." FontStyle="Oblique" 
                HorizontalAlignment="Left" Margin="10,43,0,0" VerticalAlignment="Top" Width="482"/>
 
         <!-- Log on form -->
-        <Label Content="Username" HorizontalAlignment="Left" Margin="21,78,0,0" VerticalAlignment="Top" Width="70"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="21,139,0,0" VerticalAlignment="Top" Width="70"/>
-        <TextBox HorizontalAlignment="Left" Text="{Binding Path=LoginCredential}" Height="23" Margin="21,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="218"/>
-        <PasswordBox Name="password" HorizontalAlignment="Left" Height="23" Margin="21,165,0,0" VerticalAlignment="Top" Width="218">
+        <Label Grid.Row="1" Grid.Column="1" Content="Username/UIN" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150"/>
+        <Label Grid.Row="2" Grid.Column="1"  Content="Password" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="150"/>
+        
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Path=LoginCredential}" Height="25" TextWrapping="Wrap"  VerticalAlignment="Center" Width="250"/>
+        
+        <PasswordBox Grid.Row="2" Grid.Column="1" Name="password" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="250">
             <i:Interaction.Behaviors>
                 <utilities:PasswordBoxBindingBehavior Password="{Binding Password}" />
             </i:Interaction.Behaviors>
         </PasswordBox>
-        <Button Content="Log In" HorizontalAlignment="Left" Margin="21,215,0,0" VerticalAlignment="Top" Width="90" Command="{Binding LoginCommand}" />
-        <Button Content="Register" HorizontalAlignment="Left" Margin="140,215,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
-
+        
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <Button Content="Log In" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Command="{Binding LoginCommand}" />
+            <Button Content="Register" Margin="75,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="86" Click="Button_Click"/>
+        </StackPanel>
+       
     </Grid>
 </mui:ModernWindow>

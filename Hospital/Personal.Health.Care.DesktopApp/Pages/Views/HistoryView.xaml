@@ -9,8 +9,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
         
     <Grid Style="{StaticResource ContentRoot}">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
-        <ListView ItemsSource="{Binding Histories}" SelectionMode="Single" HorizontalAlignment="Left"  Width="500" >
+        <ListView Grid.Row="0" ItemsSource="{Binding Histories}" SelectedItem="{Binding SelectedHistory}" SelectionMode="Single" HorizontalAlignment="Left"  Width="700" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -36,5 +41,6 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <Button Grid.Row="1" IsEnabled="{Binding HasSelectedVisitation}" Content="View History" Command="{Binding ViewHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150"/>
     </Grid>
 </UserControl>

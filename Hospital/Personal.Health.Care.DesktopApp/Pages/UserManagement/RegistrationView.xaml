@@ -16,14 +16,25 @@
                   mc:Ignorable="d" 
                   d:DesignHeight="300" d:DesignWidth="300"
                   MinHeight="600"
-                  MinWidth="700"   
-                  Title="Registration"                  
+                  MinWidth="700"  
+                  Width="700"
+                  Height="700"
+                  Title="Registration" 
+                  ResizeMode="NoResize"
                   Style="{StaticResource BlankWindow}">
 
     <Window.DataContext>
         <local:RegistrationViewModel/>
     </Window.DataContext>
 
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{ Binding AddPatientCommand}" />
+    </Window.InputBindings>
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Personal.Health.Care.DesktopApp;component/Images/Pictures/registration.jpg"/>
+    </Window.Background>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -40,8 +51,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>           
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new account" Style="{StaticResource Heading2}" />

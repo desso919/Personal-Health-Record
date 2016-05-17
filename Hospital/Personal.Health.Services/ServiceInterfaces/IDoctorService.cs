@@ -9,7 +9,7 @@ namespace Personal.Health.Services
 {
     public interface IDoctorService
     {
-        Task<List<Doctor>> GetAllDoctors();
+        List<Doctor> GetAllDoctors();
 
         Doctor getDoctor(long id);
 

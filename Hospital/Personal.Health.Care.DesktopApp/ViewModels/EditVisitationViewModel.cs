@@ -20,16 +20,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private ScheduledVisitation visitation;
-        private List<HospitalModel> hospitals;
         private ICommand saveCommand;
-        private List<Doctor> doctors;
 
         #region Constructor
 
         public EditVisitationViewModel(ScheduledVisitation visitation)
         {
-            Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             saveCommand = new RelayCommand(SaveVisitation);
             MediatorClass.SaveCommand = SaveCommand;
             LoadVisitation(visitation);
@@ -43,14 +39,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand SaveCommand { get { return saveCommand; } set { saveCommand = value; NotifyPropertyChanged(); } }
@@ -83,7 +77,8 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
             if (isSuccessfullyEdited)
             {
-                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations();
+                MediatorClass.UpdatePatientVisitations();
+                SheduledVisitationsViewModel.GetInstance().update();
                 MessageBox.Show("Result", "Visitation Successfully Edited");
             }
             else

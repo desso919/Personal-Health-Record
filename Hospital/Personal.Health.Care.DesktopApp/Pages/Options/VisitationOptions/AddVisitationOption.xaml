@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
@@ -34,7 +35,7 @@
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Create new visitation" Style="{StaticResource Heading2}" />
 
         <Label Grid.Row="1" Grid.Column="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals, Mode=TwoWay}" SelectedItem="{Binding Visitation.Hospital, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Visitation.Hospital, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowHospital}" />
@@ -43,7 +44,7 @@
         </ComboBox>
         
         <Label Grid.Row="2" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
-        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors, Mode=TwoWay}" SelectedItem="{Binding Visitation.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <ComboBox  Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Visitation.Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowDoctor}" />
@@ -53,17 +54,17 @@
         </ComboBox>
         
         <Label Grid.Row="3" Grid.Column="0" Content="Plan Date:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
-        <xctk:DateTimePicker Grid.Row="3" Grid.Column="1" Text="{Binding Visitation.Date,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200"/>
+        <xctk:DateTimePicker Grid.Row="3" Grid.Column="1" DefaultValue="{x:Static sys:DateTime.Now}" Text="{Binding Visitation.Date,  Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
         <Label Grid.Row="4" Grid.Column="0" Content="Reason:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Visitation.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
-        <Label Grid.Row="5" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Visitation.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="500"/>
+        <Label Grid.Row="5" Grid.Column="0" Content="Notes/Description:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Visitation.Description, Mode=TwoWay}" Height="50" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" Width="500"/>
 
         <StackPanel  Grid.Row="6" Grid.Column="1" Orientation="Horizontal" >
             <Button Content="Load Template" Command="{Binding LoadTemplateCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"/>
-            <Button  Content="Add Visitation" Command="{Binding AddVisitationCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Margin="120,0,0,0"/>
+            <Button  Content="Add Visitation" Command="{Binding AddVisitationCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Margin="200,0,0,0"/>
         </StackPanel>
        
     </Grid>

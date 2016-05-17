@@ -28,6 +28,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         private ScheduledVisitation selectedVisitation;
         private ICommand moveToHistoryCommand;
         private ICommand editVisitationCommand;
+        private Boolean hasSelectedTemplate;
         private string diagnose;
 
         #region Constructor
@@ -36,9 +37,11 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         {
             service = NinjectConfig.Container.Get<IVisitationService>();
             historyService = NinjectConfig.Container.Get<IHistoryService>();
-            moveToHistoryCommand = new RelayCommand(MoveToHistoryMethod);
+            moveToHistoryCommand = new RelayCommand(showDiagnoseDialog);
             editVisitationCommand = new RelayCommand(EditVisitation);
-            ShowScheduledVisitations();
+   
+            Init();
+            update();
         }
 
         public static SheduledVisitationsViewModel GetInstance()
@@ -54,13 +57,15 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #region Properties
 
-        public List<ScheduledVisitation> Visitations { get { return visitations; } set { visitations = value; NotifyPropertyChanged(); } }
+        public List<ScheduledVisitation> Visitations { get { return visitations; } set { visitations = value; NotifyPropertyChanged(); } } 
 
         public ICommand MoveToHistoryCommand { get { return moveToHistoryCommand; } set { moveToHistoryCommand = value; NotifyPropertyChanged(); } }
 
         public ICommand EditVisitationCommand { get { return editVisitationCommand; } set { editVisitationCommand = value; NotifyPropertyChanged(); } }
 
-        public ScheduledVisitation SelectedVisitation { get { return selectedVisitation; } set { selectedVisitation = value; NotifyPropertyChanged(); } }
+        public ScheduledVisitation SelectedVisitation { get { return selectedVisitation; } set { HasSelectedVisitation = true; selectedVisitation = value; NotifyPropertyChanged(); } }
+
+        public Boolean HasSelectedVisitation { get { return hasSelectedTemplate; } set { hasSelectedTemplate = value; NotifyPropertyChanged(); } }
 
         public string Diagnose { get { return diagnose; } set { diagnose = value; NotifyPropertyChanged(); } }
         #endregion
@@ -79,45 +84,26 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #region Move to history Code
 
-        public void MoveToHistoryMethod(object obj)
+        public void showDiagnoseDialog(object obj)
         {
-            AskDiagnoseView dialog = new AskDiagnoseView();
-            dialog.ShowDialog();
-
-            if (dialog.ResponseText == null || dialog.ResponseText.Equals(String.Empty))
-            {
-                MessageBox.Show(" Cannot move without diagnose! ");
-                return;
-            }
-
-            Diagnose = dialog.ResponseText;
-            Boolean isAdded = service.MakeVisitationHistory(SelectedVisitation.Id, Diagnose);
-
-            if (isAdded)
-            {
-                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations(); 
-                MessageBox.Show("  Moved Successfully! ");                
-            }
-            else
-            {
-                MessageBox.Show(" Error while trying to moved the selected visitation! ");
-            }
+            AskDiagnoseView dialog = new AskDiagnoseView(SelectedVisitation);
+            dialog.ShowDialog();          
         }
 
         private void EditVisitation(object obj)
         {
-            //EditVisitationView edit = new EditVisitationView();
-            //edit.ShowDialog();
-
             ModernDialog1 edit = new ModernDialog1(SelectedVisitation);
             edit.ShowDialog();
-
-           var a = MediatorClass.SelectedVisitation;
         }
 
-        public void ShowScheduledVisitations()
+        public void Init()
         {
-            Visitations = service.GetAllScheduledVisitationsForThisPatient(LoggedInPatient.GetPatient().Id);
+            MediatorClass.UpdatePatientVisitations();
+        }
+
+        public void update()
+        {
+            Visitations = MediatorClass.Visitations;
         }
 
         #endregion

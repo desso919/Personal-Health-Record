@@ -30,8 +30,6 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public EditTemplateViewModel(Template template)
         {
-            Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             saveCommand = new RelayCommand(SaveTemplate);
             MediatorClass.SaveTemplateCommand = SaveTemplateCommand;
             LoadTemplate(template);       
@@ -45,14 +43,12 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand SaveTemplateCommand { get { return saveCommand; } set { saveCommand = value; NotifyPropertyChanged(); } }
@@ -74,24 +70,38 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         private void LoadTemplate(Template template)
         {
-            Template = template.Clone();
-            Template.Doctor = Doctors.Find(doctor => doctor.DoctorId == template.DoctorId);
-            Template.Hospital = Hospitals.Find(hospital => hospital.HospitalId == template.HospitalId);
+            if (template != null)
+            {
+                Template = template.Clone();
+                Template.Doctor = Doctors.Find(doctor => doctor.DoctorId == template.DoctorId);
+                Template.Hospital = Hospitals.Find(hospital => hospital.HospitalId == template.HospitalId);
+            }        
         }
 
         private void SaveTemplate(object obj)
         {
-            bool isSuccessfullyEdited = NinjectConfig.Container.Get<ITemplateService>().EditTemplate(Template);
+            if (Utills.Utill.isValidTemplate(Template))
+            {
+                Template.Patient = LoggedInPatient.GetPatient();
+                bool isSuccessfullyEdited = NinjectConfig.Container.Get<ITemplateService>().EditTemplate(Template);
+                string message = String.Empty;
 
-            if (isSuccessfullyEdited)
-            {
-                TemplatesViewModel.GetInstance().ShowAllPatientTemplates();
-                MessageBox.Show("Result", "Template Successfully Edited");
-            }
-            else
-            {
-                MessageBox.Show("Error", "Error while trying to save your changes");
-            }
+                if (isSuccessfullyEdited)
+                {
+                    MediatorClass.UpdatePatientTemplates();
+                    TemplatesViewModel.GetInstance().update();
+                    message = "Template Successfully Edited";
+                }
+                else
+                {
+                    message = "Error while trying to save your changes";
+                }
+
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                {
+                    Messenger.ShowMessage("Operation Result", message);
+                }));
+            } 
         }
 
         #endregion

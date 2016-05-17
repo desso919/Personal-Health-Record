@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using Personal.Health.Care.DesktopApp.Pages.Views;
 using Personal.Health.Care.DesktopApp.Pages.UserManagement;
 using System.Windows;
+using Personal.Health.Care.DesktopApp.Model;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -56,15 +57,16 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             ExitConfirmView confirm = new ExitConfirmView();
             confirm.ShowDialog();
 
-            if (confirm.IsYesClicked())
-            {
-
-            }
-
             var mainWindows = Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             if (mainWindows != null)
             {
-                LoggedInPatient.LogoutPatient(); 
+                LoggedInPatient.LogoutPatient();
+                MediatorClass.Hospitals = null;
+                MediatorClass.Doctors = null;
+                MediatorClass.Histories = null;
+                MediatorClass.Visitations = null;
+                MediatorClass.RecommendedVisitation = null;
+                MediatorClass.Templates = null;
                 LoginView loginPage = new LoginView();
                 loginPage.Show();                   
                 mainWindows.Close();

@@ -9,20 +9,22 @@ namespace Personal.Health.Services.Impl
 {
     public class DoctorService : IDoctorService 
     {
-        public async Task<List<Doctor>> GetAllDoctors()
+        public List<Doctor> GetAllDoctors()
         {
-           string result = await WebService.getInstance().GetAllDoctorsAsync();
+           string result = WebService.getInstance().GetAllDoctors();
            return JsonConvert.DeserializeObject<List<Doctor>>(result);
         }
 
         public Doctor getDoctor(long id)
         {
-            return JsonConvert.DeserializeObject<Doctor>(WebService.getInstance().GetDoctor(id));
+            string result = WebService.getInstance().GetDoctor(id);
+            return JsonConvert.DeserializeObject<Doctor>(result);
         }
 
         public List<Doctor> GetAllDoctorsFromHospital(long hospital_id)
         {
-            return JsonConvert.DeserializeObject<List<Doctor>>(WebService.getInstance().GetDoctorsByHospitalId(hospital_id));
+            string result = WebService.getInstance().GetDoctorsByHospitalId(hospital_id);
+            return JsonConvert.DeserializeObject<List<Doctor>>(result);
         }
     }
 }

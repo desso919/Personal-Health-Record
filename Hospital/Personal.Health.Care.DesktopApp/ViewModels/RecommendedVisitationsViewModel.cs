@@ -19,14 +19,15 @@ using System.Windows;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
-    public class RecommendedVisitationsViewModel
+    public class RecommendedVisitationsViewModel : INotifyPropertyChanged
     {
-         public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         List<RecommendedVisitation> visiations;
         private IRecommendedVisitationService service;
         private IVisitationService visitationService;
         private RecommendedVisitation selectedVisitation;
         private ICommand addToVisitationCommand;
+        private Boolean isSelected;
 
         #region Constructor
 
@@ -35,7 +36,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             service = NinjectConfig.Container.Get<IRecommendedVisitationService>();
             visitationService = NinjectConfig.Container.Get<IVisitationService>();
             addToVisitationCommand = new RelayCommand(AddToMyVisitations);
-            ShowPatientRecommendedVisitation();
+            update();
         }
         #endregion
 
@@ -43,9 +44,11 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         public List<RecommendedVisitation> RecommendedVisiations { get { return visiations; } set { visiations = value; NotifyPropertyChanged(); } }
 
-        public RecommendedVisitation SelectedVisitation { get { return selectedVisitation; } set { selectedVisitation = value; NotifyPropertyChanged(); } }
+        public RecommendedVisitation SelectedVisitation { get { return selectedVisitation; } set { HasSelectedVisitation = true; selectedVisitation = value; NotifyPropertyChanged(); } }
 
         public ICommand AddToVisitationCommand { get { return addToVisitationCommand; } set { addToVisitationCommand = value; NotifyPropertyChanged(); } }
+
+        public Boolean HasSelectedVisitation { get { return isSelected; } set { isSelected = value; NotifyPropertyChanged(); } }
 
         #endregion
 
@@ -63,35 +66,15 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
 
         #region Show Recommended Visitations Code
 
-        public void ShowPatientRecommendedVisitation()
+        public void update()
         {
-            RecommendedVisiations = service.GetRecommendedVisitationForPatient(Utills.Utill.GetAge(LoggedInPatient.GetPatient().BirhtDate));
+            RecommendedVisiations = MediatorClass.RecommendedVisitation;
         }
 
         public void AddToMyVisitations(Object obj) {
 
-            MoveToVisitationView moveWindow = new MoveToVisitationView();
-            moveWindow.ShowDialog();
-            bool isAdded = false;
-
-            ScheduledVisitation visitation = MediatorClass.SelectedVisitation;
-            if (visitation != null)
-            {
-                visitation.Patient = LoggedInPatient.GetPatient();
-                visitation.Reason = SelectedVisitation.Reason;
-                visitation.Description = selectedVisitation.Description;
-                isAdded = visitationService.AddNewScheduleVisitation(visitation);
-            }
-
-            if (isAdded)
-            {
-                SheduledVisitationsViewModel.GetInstance().ShowScheduledVisitations();
-                MessageBox.Show("Added Seccessfuly");
-            }
-            else
-            {
-                MessageBox.Show("Error while trying to add visitation");
-            }
+            MoveToVisitationView moveWindow = new MoveToVisitationView(SelectedVisitation);
+            moveWindow.ShowDialog();         
         }
 
         #endregion

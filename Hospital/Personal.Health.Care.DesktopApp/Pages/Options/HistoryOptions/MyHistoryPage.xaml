@@ -10,7 +10,7 @@
         <!-- TODO: set @SelectedSource -->
         <mui:ModernTab Layout="List" SelectedSource="/Pages/Views/HistoryView.xaml" >
             <mui:ModernTab.Links>
-                <!-- TODO: set @Source -->
+               
                 <mui:Link DisplayName="Yesterday" Source="/Pages/Views/HistoryView.xaml" />
                 <mui:Link DisplayName="Last Week" Source="/Pages/Views/HistoryView.xaml" />
                 <mui:Link DisplayName="Last Month" Source="/Pages/Views/HistoryView.xaml" />

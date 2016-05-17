@@ -11,6 +11,7 @@ namespace Personal.Health.Models
     public class RegistrationFormModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public static RegistrationFormModel instance;
 
         private string usernameMessage;
         private string firstNameMessage;
@@ -18,6 +19,16 @@ namespace Personal.Health.Models
         private string lastNameMessage;
         private string egnMessage;
         private string birthDateMessage;
+
+        private RegistrationFormModel() { }
+
+        public static RegistrationFormModel GetInstance() {
+            if (instance == null)
+            {
+                instance = new RegistrationFormModel();
+            }
+            return instance;
+        }
 
         #region INotifyPropertyChanged
 

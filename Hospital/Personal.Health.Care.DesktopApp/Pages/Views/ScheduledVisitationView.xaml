@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Row="0" Grid.Column="0" SelectedItem="{Binding SelectedVisitation}" ItemsSource="{Binding Visitations}" SelectionMode="Single" HorizontalAlignment="Left" Width="500" >
+        <ListView Grid.Row="0" Grid.Column="0" SelectedItem="{Binding SelectedVisitation}" ItemsSource="{Binding Visitations}" SelectionMode="Single" HorizontalAlignment="Left" Width="700" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <Grid>
@@ -47,8 +47,8 @@
 
 
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            <Button Content="Edit Visitation" Command="{Binding EditVisitationCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150"/>
-            <Button Content="Move To History" Command="{Binding MoveToHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Margin="120,0,0,0"/>
+            <Button Content="Edit Visitation" IsEnabled="{Binding HasSelectedVisitation}" Command="{Binding EditVisitationCommand}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150"/>
+            <Button Content="Move To History" IsEnabled="{Binding HasSelectedVisitation}" Command="{Binding MoveToHistoryCommand}" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" Margin="350,0,0,0"/>
         </StackPanel>
 
     </Grid>

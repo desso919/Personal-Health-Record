@@ -1,6 +1,8 @@
 ﻿<mui:ModernDialog x:Class="Personal.Health.Care.DesktopApp.Pages.Views.MoveToVisitationView"
                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+                  xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                   xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
@@ -8,21 +10,20 @@
                   mc:Ignorable="d" 
                   d:DesignHeight="342.857" d:DesignWidth="362.03"
                   Title="Add Visitation">
-
-
-    <Window.DataContext>
-        <local:AddVisitationViewModel/>
-    </Window.DataContext>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>   
 
-        <Label Grid.Row="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Name="hospitalsComboBox" Grid.Row="0" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding Hospital}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Content="Hospital:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox Name="hospitalsComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding Hospitals}" SelectedItem="{Binding NewVisitation.Hospital, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowHospital}" />
@@ -30,8 +31,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Name="doctorsComboBox" Grid.Row="1" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-        <ComboBox  Grid.Row="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding Doctor}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
+        <Label Name="doctorsComboBox" Grid.Row="1" Grid.Column="0" Content="Doctor:" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120"/>
+        <ComboBox  Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Doctors}" SelectedItem="{Binding NewVisitation.Doctor, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=ShowDoctor}" />
@@ -39,8 +40,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Label Grid.Row="3" Grid.Column="2" Content="Date:" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
-        <DatePicker Name="DatePicker" Grid.Row="2" Grid.Column="1" Text="{Binding VisitationDate, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
-
+        <Label Grid.Row="2" Grid.Column="0" Content="Date:" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
+        <xctk:DateTimePicker Grid.Row="2" Grid.Column="1" DefaultValue="{Binding Visitation.Date, Mode=TwoWay}" Text="{Binding NewVisitation.Date, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
     </Grid>
 </mui:ModernDialog>

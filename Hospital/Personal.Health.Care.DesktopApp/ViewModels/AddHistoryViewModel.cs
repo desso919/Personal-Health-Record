@@ -14,6 +14,9 @@ using Hospital.Models;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using System.Windows.Controls;
+using Personal.Health.Care.DesktopApp.Model;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Personal.Health.Care.DesktopApp.ViewModels
 {
@@ -22,37 +25,31 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private ICommand addHistoryCommand;
         private IHistoryService service;
-        private List<HospitalModel> hospitals;
-        private List<Doctor> doctors;
         private History history;
 
         public AddHistoryViewModel()
         {
             history = new History();
             service = NinjectConfig.Container.Get<IHistoryService>();
-            Hospitals = NinjectConfig.Container.Get<IHospitalService>().GetAllHispitals();
-            Doctors = NinjectConfig.Container.Get<IDoctorService>().GetAllDoctors().Result;
             addHistoryCommand = new RelayCommand(AddHistoryRecord);
         }
 
         #region Properties
 
-        public History History 
-        { 
-            get { return history; } 
-            set { history = value; NotifyPropertyChanged(); } 
+        public History History
+        {
+            get { return history; }
+            set { history = value; NotifyPropertyChanged(); }
         }
 
         public List<HospitalModel> Hospitals
         {
-            get { return hospitals; }
-            set { hospitals = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Hospitals; }
         }
 
         public List<Doctor> Doctors
         {
-            get { return doctors; }
-            set { doctors = value; NotifyPropertyChanged(); }
+            get { return MediatorClass.Doctors; }
         }
 
         public ICommand AddHistoryCommand
@@ -81,19 +78,30 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
         public void AddHistoryRecord(object obj)
         {
 
-            History.Patient = LoggedInPatient.GetPatient();
-            Boolean isAdded = service.addHistory(History);
+            if (Utills.Utill.isValidHistory(History))
+            {
+                History.Patient = LoggedInPatient.GetPatient();
+                Boolean isAdded = service.addHistory(History);
+                string message;
 
-            if (isAdded)
-            {
-                HistoryViewModel.GetInstance().ShowPatientHistory();
-                MessageBox.Show(" History Added Successfully! ");
+                if (isAdded)
+                {
+                    MediatorClass.UpdatePatientHistory();
+                    HistoryViewModel.GetInstance().update();
+                    message = "History Added Successfully";
+                }
+                else
+                {
+                    message = " Error while trying to add history! ";
+                }
+
+                System.Windows.Threading.Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                {
+                    Messenger.ShowMessage("Result", message);
+                }));
+
+                History = new History();  
             }
-            else
-            {
-                MessageBox.Show(" Error while trying to add history! ");
-            }
-            History = new History();
         }
 
         #endregion

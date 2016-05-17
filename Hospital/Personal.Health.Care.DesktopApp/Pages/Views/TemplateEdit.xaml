@@ -14,7 +14,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -23,7 +23,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="Title" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="120"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Title" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
         <TextBox Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Title}" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="300"/>
 
         <Label Grid.Row="2" Grid.Column="0" Content="Hospital" Foreground="Blue" FontStyle="Oblique" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="120"/>
@@ -48,7 +48,7 @@
         <TextBox Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Reason, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="300"/>
 
         <Label Grid.Row="4" Grid.Column="0"  Content="Description" Foreground="Blue" HorizontalAlignment="Left" FontStyle="Oblique" VerticalAlignment="Center" Width="120"/>
-        <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="0,10,0,10" Text="{Binding Template.Description, Mode=TwoWay}" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="60" Width="300"/>
+        <TextBox Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Template.Description, Mode=TwoWay}" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="50" Width="300"/>
 
     </Grid>
 </mui:ModernDialog>

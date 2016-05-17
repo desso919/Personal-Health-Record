@@ -9,12 +9,6 @@
                   d:DesignHeight="300" d:DesignWidth="300"
                   Title="Diagnose">
 
-
-
-    <Window.DataContext>
-        <local:AskDiagnoseViewModel/>
-    </Window.DataContext>
-    
     <Grid>
         
         <Grid.RowDefinitions>

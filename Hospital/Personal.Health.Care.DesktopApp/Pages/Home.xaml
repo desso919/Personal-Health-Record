@@ -6,8 +6,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Personal.Health.Care.DesktopApp.ViewModels"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d"                          
+             d:DesignHeight="300" d:DesignWidth="300">  
+    
     <UserControl.DataContext>
         <local:MainPageViewModel/>
     </UserControl.DataContext>
@@ -17,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
@@ -26,8 +28,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Patient.WelcomeUser}" FontStyle="Oblique" Style="{StaticResource Heading2}" />
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="Quick Start" FontStyle="Oblique"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Patient.WelcomeUser}" FontSize="20" FontStyle="Oblique" Style="{StaticResource Heading2}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Quickly Create New" FontSize="18" FontStyle="Normal" Margin="0,10,0,0"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="Info" FontSize="18" Margin="0,10,0,0" FontStyle="Normal"/>
 
         <Controls:Tile Height="120" Width="230" Title="Visitatoin" Grid.Row="1" ToolTip="Quickly add a new visitation" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/VisitationOptions/AddVisitationOption.xaml" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/scheduled.png" HorizontalAlignment="Center" VerticalAlignment="Center" Height="80"/>
@@ -37,15 +40,15 @@
             <Image Source="../../Images/Icons/history2.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>           
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Template" ToolTip="Quickly add a new template" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/TemplateOptions/AddTemplateOption.xaml"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Background="{Binding}" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Template" ToolTip="Quickly add a new template" Command="NavigationCommands.GoToPage" CommandParameter="Pages/Options/TemplateOptions/AddTemplateOption.xaml"  HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="2" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/template.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Profile" ToolTip="View Profile" Command="NavigationCommands.GoToPage" CommandParameter="/Pages/Settings/PatientProfileView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Background="{Binding SelectedTheme}" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Profile" ToolTip="View Profile" Command="NavigationCommands.GoToPage" CommandParameter="/Pages/Settings/PatientProfileView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/profile.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 
-        <Controls:Tile Height="120" Width="230" Title="Help" Command="NavigationCommands.GoToPage" ToolTip="Show Help" CommandParameter="/Pages/Settings/HelpView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Background="{Binding SelectedAccentColor}" BorderBrush="Black" BorderThickness="1">
+        <Controls:Tile Height="120" Width="230" Title="Help" Command="NavigationCommands.GoToPage" ToolTip="Show Help" CommandParameter="/Pages/Settings/HelpView.xaml"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" Background="DarkTurquoise" BorderBrush="Black" BorderThickness="1">
             <Image Source="../../Images/Icons/help.png" HorizontalAlignment="Left" VerticalAlignment="Center" Height="80"/>
         </Controls:Tile>
 

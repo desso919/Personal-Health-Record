@@ -1,4 +1,7 @@
 ﻿using FirstFloor.ModernUI.Windows.Controls;
+using Hospital.Models;
+using Personal.Health.Care.DesktopApp.Model;
+using Personal.Health.Care.DesktopApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +30,24 @@ namespace Personal.Health.Care.DesktopApp.Pages.Views
 
             // define the dialog buttons
             this.Buttons = new Button[] { this.OkButton, this.CancelButton };
+            this.OkButton.Command = MediatorClass.OKCommand;
+        }
+
+
+        public AskDiagnoseView(ScheduledVisitation visit)
+        {
+            InitializeComponent();
+
+            // define the dialog buttons
+            this.Buttons = new Button[] { this.OkButton, this.CancelButton };
+            this.DataContext = new AskDiagnoseViewModel(visit);
+            this.OkButton.Command = MediatorClass.OKCommand;
         }
 
         public string ResponseText
         {
             get { return ResponseTextBox.Text; }
-            set { ResponseTextBox.Text = value; }
-        }
+            set { ResponseTextBox.Text = value; MediatorClass.diagnose = value; }
+        } 
     }
 }

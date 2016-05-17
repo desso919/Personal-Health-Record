@@ -31,7 +31,7 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             patient = new Patient();          
             service = NinjectConfig.Container.Get<IPatientService>();
             addPatientCommand = new RelayCommand(RegisterPatient);
-            registrationFormModel = new RegistrationFormModel();
+            registrationFormModel = RegistrationFormModel.GetInstance();
         }
 
         #region Properties
@@ -109,13 +109,13 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
                         }
                         else
                         {
-                            MessageBox.Show(" Something went wrong! ");
+                            Messenger.ShowMessage(" Something went wrong! ");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show(" Error while trying to register you ! ");
+                    Messenger.ShowMessage(" Error while trying to register you. ");
                 }
             }                  
         }
@@ -125,19 +125,19 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             RegistrationFormModel.clearFormMessages();
             if (!SecurityUtil.isValidString(Patient.Username))
             {
-                RegistrationFormModel.UsernameMessage = "Please enter a valid username name!";
+                RegistrationFormModel.UsernameMessage = SecurityUtil.getProperMessage(Patient.Username, "username");
                 return false;
             }
             if (!SecurityUtil.isValidString(Patient.FirstName))
             {
-                RegistrationFormModel.FirstNameMessage = "Please enter a valid first name!";
+                RegistrationFormModel.FirstNameMessage = SecurityUtil.getProperMessage(Patient.FirstName, "first name"); 
                 return false;
 
             }
             else if (!SecurityUtil.isValidString(Patient.LastName))
             {
 
-                RegistrationFormModel.LastNameMessage = "Please enter a valid last name!";
+                RegistrationFormModel.LastNameMessage = SecurityUtil.getProperMessage(Patient.LastName, "last name"); 
                 return false;
             }
 
@@ -145,18 +145,18 @@ namespace Personal.Health.Care.DesktopApp.ViewModels
             {
                 if (!SecurityUtil.isValidString(Patient.SecondName))
                 {
-                    RegistrationFormModel.SecondNameMessage = "Please enter a valid second name!";
+                    RegistrationFormModel.SecondNameMessage = SecurityUtil.getProperMessage(Patient.SecondName, "second name"); 
                     return false;
                 }
             }
             if(!SecurityUtil.isValidDate(Patient.BirhtDate)) 
             {
-                RegistrationFormModel.BirthDateMessage = "Please enter a valid birth date!";
+                RegistrationFormModel.BirthDateMessage = SecurityUtil.getProperMessage(Patient.BirhtDate, "birth date"); ;
               return false;
             }
             if(!SecurityUtil.isEGN(Patient.EGN)) 
             {
-                RegistrationFormModel.EGNMessage = "Please enter a valid EGN. It Must contain only digits!";
+                RegistrationFormModel.EGNMessage = SecurityUtil.getProperMessage(Patient.EGN, "egn. It Must contain only digits!");
                 return false;
             }
             return true;
